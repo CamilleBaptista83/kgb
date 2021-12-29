@@ -1,4 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,400;0,600;1,700&display=swap');
+
 //Variables
 $mainColor : #ED1C24;
 $darkMainColor : #5f0b0e;
-$fontTitle : 'Kanit', sans-serif;
+$white : white;
+$fontTitle : 'Roboto Mono', monospace;
+
+body{
+    font-family: $fontTitle;
+}
+
+img{
+    width: 8rem;
+}
+
+section{
+    height: 100vh;
+    background-color: $darkMainColor;
+}
+
+.btn{
+    background-color: $darkMainColor;
+    color: $white;
+
+    &:hover{
+        background-color: $white;
+        color: $darkMainColor;
+        border: 2px solid $darkMainColor;
+    }
+}
