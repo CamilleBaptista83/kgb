@@ -1,13 +1,10 @@
 <?php
 
-try {
-    $kgb_bdd = new PDO('mysql:host=localhost;dbname=kgb;charset=utf8', 'kgb_admin', 'vladimirovitch');
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
+require  "models/getAdmin.php";
+require  "models/getAgents.php";
 
-$req = $kgb_bdd->query('SELECT * FROM dt_admin');
+$admin = getAdmin();
+$agent = getAgents();
 
-require  "pages/affichage_acceuil.php";
 
-?>
+require  "pages/home.php";
