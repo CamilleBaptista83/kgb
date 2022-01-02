@@ -1,30 +1,25 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
+<tr>
+    <th scope="row"><?= $agent->getAgent_id_uuid() ?></th>
+    <td><?= $agent->getIdentification_code() ?></td>
+    <td><?= $agent->getFirst_name() ?></td>
+    <td><?= $agent->getLast_name() ?></td>
+    <td><?= $agent->getBirth_date() ?></td>
+    <td><?= $agent->getName() ?></td>
 
+    <td>
         <?php
-        while ($donnees = $agent->fetch()) {
+        $manager = new SpecialityManager();
+
+        $specialities = $manager->getSpeciality($agent->getAgent_id_uuid());
+
+        foreach ($specialities as $speciality) {
         ?>
-
-            <tr>
-                <th scope="row"><?= htmlspecialchars($donnees['agent_id_uuid']) ?></th>
-                <td><?= $donnees['identification_code']; ?></td>
-                <td><?= $donnees['first_name']; ?></td>
-                <td><?= $donnees['last_name']; ?></td>
-                <td><?= $donnees['birth_date']; ?></td>
-                <td><?= $donnees['name']; ?></td>
-            </tr>
-
+            <span><?= $speciality->getSpe_name() ?></span>
         <?php
-        } // Fin de la boucle des billets
-        $admin->closeCursor();
+        }
         ?>
-    </tbody>
-</table>
+    </td>
+
+    <td><a href="../kgb/updateAgents.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Edit</a></td>
+    <td><a href="../kgb/deleteAgent.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Delete</a></td>
+</tr>

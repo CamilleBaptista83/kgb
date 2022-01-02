@@ -1,10 +1,6 @@
 <?php
 
-require  "models/getAdmin.php";
-require  "models/getAgents.php";
-
-$admin = getAdmin();
-$agent = getAgents();
+// classes
 
 
 require  "pages/home.php";

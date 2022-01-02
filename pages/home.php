@@ -20,23 +20,115 @@
 </head>
 
 <body>
-    <?php
-
-    require  "../kgb/components/header.html";
-
-    ?>
-
-    <h1 class="text-center">Les Missions</h1>
-
-
-    <section>
+    <main>
         <?php
-        require  "../kgb/vue/affichage_acceuil.php";
-        require  "../kgb/vue/affichage_agents.php";
+
+        require  "../kgb/components/header.html";
+        require  "../kgb/components/loadClasses.php";
+
         ?>
 
-    </section>
+        <h1 class="text-center">Les Missions</h1>
 
+
+        <section>
+            <div class="container">
+
+
+                <?php
+
+                // AGENTS
+
+                // creation d'un nouvel obj
+                $manager = new AgentsManager();
+                // appel de la fonction get all pour récupérer les données
+                $agents = $manager->getAll();
+
+                ?>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
+                        // affichage agents
+                        foreach ($agents as $agent) {
+                            require "../kgb/vue/affichage_agents.php";
+                        }
+                        ?>
+
+
+                    </tbody>
+                </table>
+
+                <?php
+
+                // CIBLES
+
+                // creation d'un nouvel obj
+                $manager = new CiblesManager();
+                // appel de la fonction get all pour récupérer les données
+                $cibles = $manager->getAll();
+                ?>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($cibles as $cible) {
+                            require "../kgb/vue/affichage_cibles.php";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+
+
+                <?php
+
+                // CONTACTS
+
+                // creation d'un nouvel obj
+                $manager = new ContactsManager();
+                // appel de la fonction get all pour récupérer les données
+                $contacts = $manager->getAll();
+                ?>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($contacts as $contact) {
+                            require "../kgb/vue/affichage_contacts.php";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </section>
+    </main>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
 </body>
