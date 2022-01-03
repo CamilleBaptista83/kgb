@@ -38,6 +38,7 @@ class AgentsManager
     public function create(Agents $agent)
     {
         $request = $this->pdo->prepare("INSERT INTO dt_agents(agent_id_uuid, identification_code, first_name, last_name, birth_date, id_country) VALUES (UUID(), :identification_code,  :first_name, :last_name, :birth_date, :id_country)");
+        var_dump($agent);
         $request->bindValue(':identification_code', $agent->getIdentification_code(), PDO::PARAM_STR);
         $request->bindValue(':first_name', $agent->getFirst_name(), PDO::PARAM_STR);
         $request->bindValue(':last_name', $agent->getLast_name(), PDO::PARAM_STR);

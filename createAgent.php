@@ -6,11 +6,23 @@ require  "./components/loadClasses.php";
 
 $manager = new AgentsManager();
 
+// affichage des nom de pays dans l'input select
+$managerContries = new CountriesManager();
+$contries = $managerContries->getCountryName();
+
+// affichage des nom des spécialités dans l'input check
+$managerSpecialities = new SpecialityManager();
+$specialities = $managerSpecialities->getSpecialitiesName();
+
+
 if ($_POST) {
     $agent = new Agents($_POST);
     $manager->create($agent);
 
-    echo '<script>window.location.href="../kgb/index.php"</script>';
+    $specialities = new Speciality($_POST);
+    $managerSpecialities->create($specialities);
+
+    //echo '<script>window.location.href="../kgb/createAgentSpecialities.php"</script>';
 }
 ?>
 
@@ -42,8 +54,6 @@ if ($_POST) {
                     <option selected>Choisir votre pays</option>
 
                     <?php
-                    $managerContries = new CountriesManager();
-                    $contries = $managerContries->getCountryName();
 
                     foreach ($contries as $country) {
                     ?>
@@ -53,6 +63,22 @@ if ($_POST) {
                     ?>
 
                 </select>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <h2>Spécilaités</h2>
+
+                <?php
+
+                foreach ($specialities as $speciality) {
+                ?>
+                    <input name="id_speciality" class="form-check-input" type="checkbox" value="<?= $speciality->getId() ?>" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        <?= $speciality->getSpe_name() ?>
+                    </label>
+                <?php
+                }
+                ?>
             </div>
 
             <div>

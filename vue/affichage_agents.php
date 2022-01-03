@@ -13,11 +13,18 @@
         $specialities = $manager->getSpecialityById($agent->getAgent_id_uuid());
 
         foreach ($specialities as $speciality) {
+            if (!$speciality->getSpe_name()) {
         ?>
-            <p><?= $speciality->getSpe_name() ?></p>
+                <a href="./createAgentSpecialities.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Ajouter une Spécialités</a>
+            <?php
+            } else {
+            ?>
+                <p><?= $speciality->getSpe_name() ?></p>
         <?php
+            }
         }
         ?>
+
     </td>
 
     <td><a href="./updateAgents.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Edit</a></td>

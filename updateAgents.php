@@ -7,6 +7,9 @@ require  "./components/loadClasses.php";
 $manager = new AgentsManager();
 $agent = $manager->getById($_GET['id']);
 
+$managerContries = new CountriesManager();
+$contries = $managerContries->getCountryName();
+
 if ($_POST) {
     $agent->hydrate($_POST);
 
@@ -44,8 +47,6 @@ if ($_POST) {
                     <option value="<?= $agent->getId_country() ?>" selected><?= $agent->getName() ?></option>
 
                     <?php
-                    $managerContries = new CountriesManager();
-                    $contries = $managerContries->getCountryName();
 
                     foreach ($contries as $country) {
                     ?>
