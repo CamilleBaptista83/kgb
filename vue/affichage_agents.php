@@ -4,7 +4,7 @@
     <td><?= $agent->getFirst_name() ?></td>
     <td><?= $agent->getLast_name() ?></td>
     <td><?= $agent->getBirth_date() ?></td>
-    <td><?= $agent->getName() ?></td>
+    <td><?= $agent->getId_country() ?></td>
 
     <td>
         <?php

@@ -1,6 +1,6 @@
 <?php
 
-require('./components/header.php');
+require './components/header.php' ;
 require  "./components/loadClasses.php";
 
 
@@ -8,11 +8,15 @@ $manager = new AgentsManager();
 $agent = $manager->getById($_GET['id']);
 
 if ($_POST) {
-    $agent->hydrate($_POST);
+    $agent = new Agents();
     var_dump($agent);
+    $agent->hydrate($_POST);
+    var_dump($_POST);
+    var_dump($agent);
+
     $manager->update($agent);
 
-    //echo '<script>window.location.href="../kgb/index.php"</script>';
+    echo '<script>window.location.href="../kgb/index.php"</script>';
 }
 ?>
 
@@ -22,20 +26,20 @@ if ($_POST) {
         <div class="row">
             <div class="form-group col-sm-6">
                 <label for="form-label">Nom : </label>
-                <input type="text" class="form-control" id="last-name" name="agent_id_uuid" value="<?= $agent->getAgent_id_uuid() ?>" required>
+                <input type="text" class="form-control" id="agent_id_uuid" name="agent_id_uuid" value="<?= $agent->getAgent_id_uuid() ?>" required>
             </div>
             <div class="form-group col-sm-6">
                 <label for="form-label">Nom : </label>
-                <input type="text" class="form-control" id="last-name" name="identification_code" value="<?= $agent->getIdentification_code() ?>" required>
+                <input type="text" class="form-control" id="identification_code" name="identification_code" value="<?= $agent->getIdentification_code() ?>" required>
             </div>
 
             <div class="form-group col-sm-6">
                 <label for="form-label">Prénom : </label>
-                <input type="text" class="form-control" id="first-name" name="first-name" value="<?= $agent->getFirst_name() ?>" required>
+                <input type="text" class="form-control" id="first_name" name="first_name" value="<?= $agent->getFirst_name() ?>" required>
             </div>
             <div class="form-group col-sm-6">
                 <label for="form-label">Nom : </label>
-                <input type="text" class="form-control" id="last-name" name="last-name" value="<?= $agent->getLast_name() ?>" required>
+                <input type="text" class="form-control" id="last_name" name="last_name" value="<?= $agent->getLast_name() ?>" required>
             </div>
 
             <div class="form-group col-sm-6">

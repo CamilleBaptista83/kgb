@@ -9,7 +9,6 @@ class Agents
     private $last_name;
     private $birth_date;
     private $id_country;
-    private $name;
 
     public function __construct(array $data = array())
     {
@@ -151,23 +150,5 @@ class Agents
         return $this;
     }
 
-    /**
-     * Get the value of name
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 
-    /**
-     * Set the value of name
-     *
-     * @return  self
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
 }
