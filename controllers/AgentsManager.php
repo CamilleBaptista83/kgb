@@ -48,12 +48,13 @@ class AgentsManager
 
     public function update(Agents $agent)
     {
-        $request = $this->pdo->prepare("UPDATE dt_agents(identification_code, first_name, last_name, birth_date, id_country) SET identification_code=:identification_code,  first_name=:first_name, last_name=:last_name, birth_date=:birth_date, id_country=:id_country WHERE agent_id_uuid=:agent_id_uuid");
+        $request = $this->pdo->prepare("UPDATE `dt_agents` SET identification_code=:identification_code,  first_name=:first_name, last_name=:last_name, birth_date=:birth_date, id_country=:id_country WHERE agent_id_uuid=:agent_id_uuid");
         $request->bindValue(':identification_code', $agent->getIdentification_code(), PDO::PARAM_STR);
         $request->bindValue(':first_name', $agent->getFirst_name(), PDO::PARAM_STR);
         $request->bindValue(':last_name', $agent->getLast_name(), PDO::PARAM_STR);
         $request->bindValue(':birth_date', $agent->getBirth_date(), PDO::PARAM_STR);
         $request->bindValue(':id_country', $agent->getId_country(), PDO::PARAM_INT);
+        $request->bindValue(':agent_id_uuid', $agent->getAgent_id_uuid(), PDO::PARAM_STR);
         $request->execute();
     }
 

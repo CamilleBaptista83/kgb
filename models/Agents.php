@@ -11,23 +11,29 @@ class Agents
     private $id_country;
     private $name;
 
-    public function __construct(array $data)
+    public function __construct(array $data = array())
     {
-        $this->hydrate($data);
+        if (!empty($data)) {
+            $this->hydrate($data);
+        }
     }
+    public function hydrate(array $data)
+    {
+        foreach ($data as $key => $value) {
+            // One gets the setter's name matching the attribute.
+            $method = 'set' . ucfirst($key);
 
-    public function hydrate(array $data) : void {
-        foreach ($data as $key => $value){
-            $method = 'set' . ucfirst($key); //ucfirst = premiere lettre maj
-            if(method_exists($this, $method)){
-                $this -> $method($value);
+            // If the matching setter exists
+            if (method_exists($this, $method)) {
+                // One calls the setter.
+                $this->$method($value);
             }
         }
     }
 
     /**
      * Get the value of agent_id_uuid
-     */ 
+     */
     public function getAgent_id_uuid()
     {
         return $this->agent_id_uuid;
@@ -37,7 +43,7 @@ class Agents
      * Set the value of agent_id_uuid
      *
      * @return  self
-     */ 
+     */
     public function setAgent_id_uuid($agent_id_uuid)
     {
         $this->agent_id_uuid = $agent_id_uuid;
@@ -47,7 +53,7 @@ class Agents
 
     /**
      * Get the value of identification_code
-     */ 
+     */
     public function getIdentification_code()
     {
         return $this->identification_code;
@@ -57,7 +63,7 @@ class Agents
      * Set the value of identification_code
      *
      * @return  self
-     */ 
+     */
     public function setIdentification_code(string $identification_code)
     {
         $this->identification_code = $identification_code;
@@ -67,7 +73,7 @@ class Agents
 
     /**
      * Get the value of first_name
-     */ 
+     */
     public function getFirst_name()
     {
         return $this->first_name;
@@ -77,7 +83,7 @@ class Agents
      * Set the value of first_name
      *
      * @return  self
-     */ 
+     */
     public function setFirst_name(string $first_name)
     {
         $this->first_name = $first_name;
@@ -87,7 +93,7 @@ class Agents
 
     /**
      * Get the value of last_name
-     */ 
+     */
     public function getLast_name()
     {
         return $this->last_name;
@@ -97,7 +103,7 @@ class Agents
      * Set the value of last_name
      *
      * @return  self
-     */ 
+     */
     public function setLast_name(string $last_name)
     {
         $this->last_name = $last_name;
@@ -107,7 +113,7 @@ class Agents
 
     /**
      * Get the value of birth_date
-     */ 
+     */
     public function getBirth_date()
     {
         return $this->birth_date;
@@ -117,7 +123,7 @@ class Agents
      * Set the value of birth_date
      *
      * @return  self
-     */ 
+     */
     public function setBirth_date(string $birth_date)
     {
         $this->birth_date = $birth_date;
@@ -127,7 +133,7 @@ class Agents
 
     /**
      * Get the value of id_country
-     */ 
+     */
     public function getId_country()
     {
         return $this->id_country;
@@ -137,7 +143,7 @@ class Agents
      * Set the value of id_country
      *
      * @return  self
-     */ 
+     */
     public function setId_country(string $id_country)
     {
         $this->id_country = $id_country;
@@ -147,7 +153,7 @@ class Agents
 
     /**
      * Get the value of name
-     */ 
+     */
     public function getName()
     {
         return $this->name;
@@ -157,7 +163,7 @@ class Agents
      * Set the value of name
      *
      * @return  self
-     */ 
+     */
     public function setName($name)
     {
         $this->name = $name;
