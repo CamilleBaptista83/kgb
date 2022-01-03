@@ -10,16 +10,16 @@
         <?php
         $manager = new SpecialityManager();
 
-        $specialities = $manager->getSpeciality($agent->getAgent_id_uuid());
+        $specialities = $manager->getSpecialityById($agent->getAgent_id_uuid());
 
         foreach ($specialities as $speciality) {
         ?>
-            <span><?= $speciality->getSpe_name() ?></span>
+            <p><?= $speciality->getSpe_name() ?></p>
         <?php
         }
         ?>
     </td>
 
-    <td><a href="../kgb/updateAgents.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Edit</a></td>
-    <td><a href="../kgb/deleteAgent.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Delete</a></td>
+    <td><a href="./updateAgents.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Edit</a></td>
+    <td><a href="./deleteAgents.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Delete</a></td>
 </tr>

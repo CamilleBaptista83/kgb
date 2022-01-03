@@ -4,6 +4,7 @@ class Speciality
 {
 
     private $agent_id_uuid;
+    private $id;
     private $spe_name;
 
     public function __construct(array $data)
@@ -57,6 +58,26 @@ class Speciality
     public function setSpe_name($spe_name)
     {
         $this->spe_name = $spe_name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
 
         return $this;
     }

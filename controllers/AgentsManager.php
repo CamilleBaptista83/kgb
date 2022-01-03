@@ -7,7 +7,12 @@ class AgentsManager
 
     public function __construct()
     {
-        $this->setPdo(new PDO('mysql:host=localhost;dbname=kgb;charset=utf8', 'kgb_admin', 'vladimirovitch'));
+
+        try {
+            $this->setPdo(new PDO('mysql:host=localhost;dbname=kgb;charset=utf8', 'kgb_admin', 'vladimirovitch'));
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
     }
 
     /**
@@ -61,8 +66,9 @@ class AgentsManager
 
     public function getById(string $agent_id_uuid)
     {
-        $request = $this->pdo->prepare("SELECT * FROM dt_agents WHERE agent_id_uuid=:agent_id_uuid");
+        $request = $this->pdo->prepare("SELECT * FROM dt_agents LEFT JOIN dt_countries ON dt_agents.id_country = dt_countries.id WHERE agent_id_uuid= :agent_id_uuid");
         $request->bindValue(':agent_id_uuid', $agent_id_uuid, PDO::PARAM_STR);
+        $request->execute();
         $data = $request->fetch();
         return new Agents($data);
     }
