@@ -9,6 +9,7 @@ class Agents
     private $last_name;
     private $birth_date;
     private $id_country;
+    private $name;
 
     public function __construct(array $data = array())
     {
@@ -65,7 +66,12 @@ class Agents
      */
     public function setIdentification_code(string $identification_code)
     {
-        $this->identification_code = $identification_code;
+        if (!strlen($identification_code) === 7) {
+            echo 'Le nombre doit contenir 7 chiffre';
+        } else {
+            $this->identification_code = $identification_code;
+        }
+
 
         return $this;
     }
@@ -143,7 +149,7 @@ class Agents
      *
      * @return  self
      */
-    public function setId_country(string $id_country)
+    public function setId_country(int $id_country)
     {
         $this->id_country = $id_country;
 
@@ -151,4 +157,24 @@ class Agents
     }
 
 
+
+    /**
+     * Get the value of name
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set the value of name
+     *
+     * @return  self
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
 }

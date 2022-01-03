@@ -60,7 +60,7 @@ class AgentsManager
 
     public function delete(string $agent_id_uuid)
     {
-        $request = $this->pdo->prepare("DELETE * FROM dt_agents WHERE agent_id_uuid=:agent_id_uuid");
+        $request = $this->pdo->prepare("DELETE FROM `dt_agents` WHERE agent_id_uuid= :agent_id_uuid ");
         $request->bindValue(':agent_id_uuid', $agent_id_uuid, PDO::PARAM_STR);
         $request->execute();
     }

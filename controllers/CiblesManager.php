@@ -30,39 +30,40 @@ class CiblesManager
         return $this;
     }
 
-    public function create(Cibles $agent)
+    public function create(Cibles $cible)
     {
         $request = $this->pdo->prepare("INSERT INTO dt_target(target_id_uuid, identification_code, first_name, last_name, birth_date, id_country) VALUES (UUID(), :identification_code,  :first_name, :last_name, :birth_date, :id_country)");
-        $request->bindValue(':identification_code', $agent->getCode_name(), PDO::PARAM_STR);
-        $request->bindValue(':first_name', $agent->getFirst_name(), PDO::PARAM_STR);
-        $request->bindValue(':last_name', $agent->getLast_name(), PDO::PARAM_STR);
-        $request->bindValue(':birth_date', $agent->getBirth_date(), PDO::PARAM_STR);
-        $request->bindValue(':id_country', $agent->getId_country(), PDO::PARAM_INT);
+        $request->bindValue(':identification_code', $cible->getCode_name(), PDO::PARAM_STR);
+        $request->bindValue(':first_name', $cible->getFirst_name(), PDO::PARAM_STR);
+        $request->bindValue(':last_name', $cible->getLast_name(), PDO::PARAM_STR);
+        $request->bindValue(':birth_date', $cible->getBirth_date(), PDO::PARAM_STR);
+        $request->bindValue(':id_country', $cible->getId_country(), PDO::PARAM_INT);
         $request->execute();
     }
 
-    public function update(Cibles $agent)
+    public function update(Cibles $cible)
     {
         $request = $this->pdo->prepare("UPDATE dt_target(identification_code, first_name, last_name, birth_date, id_country) SET identification_code=:identification_code,  first_name=:first_name, last_name=:last_name, birth_date=:birth_date, id_country=:id_country WHERE target_id_uuid=:target_id_uuid");
-        $request->bindValue(':identification_code', $agent->getCode_name(), PDO::PARAM_STR);
-        $request->bindValue(':first_name', $agent->getFirst_name(), PDO::PARAM_STR);
-        $request->bindValue(':last_name', $agent->getLast_name(), PDO::PARAM_STR);
-        $request->bindValue(':birth_date', $agent->getBirth_date(), PDO::PARAM_STR);
-        $request->bindValue(':id_country', $agent->getId_country(), PDO::PARAM_INT);
+        $request->bindValue(':identification_code', $cible->getCode_name(), PDO::PARAM_STR);
+        $request->bindValue(':first_name', $cible->getFirst_name(), PDO::PARAM_STR);
+        $request->bindValue(':last_name', $cible->getLast_name(), PDO::PARAM_STR);
+        $request->bindValue(':birth_date', $cible->getBirth_date(), PDO::PARAM_STR);
+        $request->bindValue(':id_country', $cible->getId_country(), PDO::PARAM_INT);
         $request->execute();
     }
 
-    public function delete(string $agent_id_uuid)
+    public function delete(string $target_id_uuid)
     {
-        $request = $this->pdo->prepare("DELETE * FROM dt_target WHERE target_id_uuid=:agent_id_uuid");
-        $request->bindValue(':agent_id_uuid', $agent_id_uuid, PDO::PARAM_STR);
+        $request = $this->pdo->prepare("DELETE * FROM dt_target WHERE target_id_uuid=:target_id_uuid");
+        $request->bindValue(':target_id_uuid', $target_id_uuid, PDO::PARAM_STR);
         $request->execute();
     }
 
-    public function getById(string $agent_id_uuid)
+    public function getById(string $target_id_uuid)
     {
-        $request = $this->pdo->prepare("SELECT * FROM dt_target WHERE agent_id_uuid=:agent_id_uuid");
-        $request->bindValue(':agent_id_uuid', $agent_id_uuid, PDO::PARAM_STR);
+        $request = $this->pdo->prepare("SELECT * FROM dt_target WHERE target_id_uuid=:target_id_uuid");
+        $request->bindValue(':target_id_uuid', $target_id_uuid, PDO::PARAM_STR);
+        $request->execute();
         $data = $request->fetch();
         return new Cibles($data);
     }

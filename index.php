@@ -40,9 +40,10 @@
                     }
                     ?>
 
-
                 </tbody>
             </table>
+
+            <a href="../kgb/createAgent.php" class="btn btn-danger">Ajouter un agent</a>
 
             <?php
 

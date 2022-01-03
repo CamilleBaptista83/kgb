@@ -1,11 +1,11 @@
 <?php
 
-// creation d'un nouvel obj
-$manager = new AgentsManager();
-// appel de la fonction get all pour récupérer les données
-$agents = $manager->getById($_GET("id"));
+require  "./components/loadClasses.php";
 
-$manager->delete($_GET("id"));
+
+$manager = new AgentsManager();
+$manager->delete($_GET['id']);
+
 ?>
 
 <script>
