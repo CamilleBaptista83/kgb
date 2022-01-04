@@ -45,7 +45,7 @@ require  "../kgb/components/loadClasses.php";
                 </tbody>
             </table>
 
-            <a href="../kgb/createAgent.php" class="btn btn-danger">Ajouter un agent</a>
+            <a href="./createAgent.php" class="btn btn-danger">Ajouter un agent</a>
 
             <?php
 
@@ -75,6 +75,9 @@ require  "../kgb/components/loadClasses.php";
                 </tbody>
             </table>
 
+            <a href="./createAgent.php" class="btn btn-danger">Ajouter un agent</a>
+
+
 
             <?php
 
@@ -103,6 +106,9 @@ require  "../kgb/components/loadClasses.php";
                     ?>
                 </tbody>
             </table>
+
+            <a href="../kgb/createAgent.php" class="btn btn-danger">Ajouter un agent</a>
+
 
         </div>
 
