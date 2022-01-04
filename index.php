@@ -1,6 +1,7 @@
 <?php
-require  "../kgb/components/header.php";
-require  "../kgb/components/loadClasses.php";
+
+require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/header.php";
+require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/loadClasses.php";
 ?>
 
 <main>
@@ -12,7 +13,6 @@ require  "../kgb/components/loadClasses.php";
     <section>
         <div class="container">
 
-
             <?php
 
             // AGENTS
@@ -23,6 +23,7 @@ require  "../kgb/components/loadClasses.php";
             $agents = $manager->getAll();
 
             ?>
+            <h2>AGENTS</h2>
 
             <table class="table">
                 <thead>
@@ -45,7 +46,7 @@ require  "../kgb/components/loadClasses.php";
                 </tbody>
             </table>
 
-            <a href="./createAgent.php" class="btn btn-danger">Ajouter un agent</a>
+            <a href="./actions/agents/createAgent.php" class="btn btn-danger">Ajouter un agent</a>
 
             <?php
 
@@ -56,6 +57,9 @@ require  "../kgb/components/loadClasses.php";
             // appel de la fonction get all pour récupérer les données
             $cibles = $manager->getAll();
             ?>
+
+            <h2>CIBLES</h2>
+
 
             <table class="table">
                 <thead>
@@ -75,7 +79,7 @@ require  "../kgb/components/loadClasses.php";
                 </tbody>
             </table>
 
-            <a href="./createAgent.php" class="btn btn-danger">Ajouter un agent</a>
+            <a href="./actions/cibles/createCibles.php" class="btn btn-danger">Ajouter une Cible</a>
 
 
 
@@ -88,6 +92,9 @@ require  "../kgb/components/loadClasses.php";
             // appel de la fonction get all pour récupérer les données
             $contacts = $manager->getAll();
             ?>
+
+            <h2>CONTACTS</h2>
+
 
             <table class="table">
                 <thead>
@@ -107,7 +114,7 @@ require  "../kgb/components/loadClasses.php";
                 </tbody>
             </table>
 
-            <a href="../kgb/createAgent.php" class="btn btn-danger">Ajouter un agent</a>
+            <a href="./actions/contacts/createContact.php" class="btn btn-danger">Ajouter un Contact</a>
 
 
         </div>
@@ -116,5 +123,5 @@ require  "../kgb/components/loadClasses.php";
 </main>
 
 <?php
-require  "../kgb/components/footer.php";
+require  $_SERVER['DOCUMENT_ROOT'].'/kgb/components/footer.php';
 ?>

@@ -1,7 +1,7 @@
 <?php
 
-require './components/header.php';
-require  "./components/loadClasses.php";
+require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/header.php";
+require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/loadClasses.php";
 
 
 $manager = new AgentsManager();
@@ -18,7 +18,7 @@ if ($_POST) {
             $specialities = new Speciality($data);
             var_dump($specialities);
             $managerSpecialities->create($specialities);
-            echo '<script>window.location.href="../kgb/index.php"</script>';
+            echo '<script>window.location.href="../../index.php"</script>';
         }
     }
 }
@@ -54,6 +54,6 @@ if ($_POST) {
 
 <?php
 
-require('./components/footer.php');
+require  $_SERVER['DOCUMENT_ROOT'].'/kgb/components/footer.php';
 
 ?>

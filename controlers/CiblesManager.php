@@ -32,8 +32,8 @@ class CiblesManager
 
     public function create(Cibles $cible)
     {
-        $request = $this->pdo->prepare("INSERT INTO dt_target(target_id_uuid, identification_code, first_name, last_name, birth_date, id_country) VALUES (UUID(), :identification_code,  :first_name, :last_name, :birth_date, :id_country)");
-        $request->bindValue(':identification_code', $cible->getCode_name(), PDO::PARAM_STR);
+        $request = $this->pdo->prepare("INSERT INTO dt_target(target_id_uuid, code_name, first_name, last_name, birth_date, id_country) VALUES (UUID(), :code_name,  :first_name, :last_name, :birth_date, :id_country)");
+        $request->bindValue(':code_name', $cible->getCode_name(), PDO::PARAM_STR);
         $request->bindValue(':first_name', $cible->getFirst_name(), PDO::PARAM_STR);
         $request->bindValue(':last_name', $cible->getLast_name(), PDO::PARAM_STR);
         $request->bindValue(':birth_date', $cible->getBirth_date(), PDO::PARAM_STR);
@@ -43,8 +43,8 @@ class CiblesManager
 
     public function update(Cibles $cible)
     {
-        $request = $this->pdo->prepare("UPDATE dt_target(identification_code, first_name, last_name, birth_date, id_country) SET identification_code=:identification_code,  first_name=:first_name, last_name=:last_name, birth_date=:birth_date, id_country=:id_country WHERE target_id_uuid=:target_id_uuid");
-        $request->bindValue(':identification_code', $cible->getCode_name(), PDO::PARAM_STR);
+        $request = $this->pdo->prepare("UPDATE dt_target(code_name, first_name, last_name, birth_date, id_country) SET code_name=:code_name,  first_name=:first_name, last_name=:last_name, birth_date=:birth_date, id_country=:id_country WHERE target_id_uuid=:target_id_uuid");
+        $request->bindValue(':code_name', $cible->getCode_name(), PDO::PARAM_STR);
         $request->bindValue(':first_name', $cible->getFirst_name(), PDO::PARAM_STR);
         $request->bindValue(':last_name', $cible->getLast_name(), PDO::PARAM_STR);
         $request->bindValue(':birth_date', $cible->getBirth_date(), PDO::PARAM_STR);
