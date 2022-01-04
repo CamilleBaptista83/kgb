@@ -38,7 +38,6 @@ class AgentsManager
     public function create(Agents $agent)
     {
         $request = $this->pdo->prepare("INSERT INTO dt_agents(agent_id_uuid, identification_code, first_name, last_name, birth_date, id_country) VALUES (UUID(), :identification_code,  :first_name, :last_name, :birth_date, :id_country)");
-        var_dump($agent);
         $request->bindValue(':identification_code', $agent->getIdentification_code(), PDO::PARAM_STR);
         $request->bindValue(':first_name', $agent->getFirst_name(), PDO::PARAM_STR);
         $request->bindValue(':last_name', $agent->getLast_name(), PDO::PARAM_STR);
@@ -70,6 +69,15 @@ class AgentsManager
     {
         $request = $this->pdo->prepare("SELECT * FROM dt_agents LEFT JOIN dt_countries ON dt_agents.id_country = dt_countries.id WHERE agent_id_uuid= :agent_id_uuid");
         $request->bindValue(':agent_id_uuid', $agent_id_uuid, PDO::PARAM_STR);
+        $request->execute();
+        $data = $request->fetch();
+        return new Agents($data);
+    }
+    
+    public function getByCode(int $identification_code)
+    {
+        $request = $this->pdo->prepare("SELECT * FROM dt_agents LEFT JOIN dt_countries ON dt_agents.id_country = dt_countries.id WHERE identification_code= :identification_code");
+        $request->bindValue(':identification_code', $identification_code, PDO::PARAM_INT);
         $request->execute();
         $data = $request->fetch();
         return new Agents($data);

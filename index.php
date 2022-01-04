@@ -1,8 +1,10 @@
+<?php
+require  "../kgb/components/header.php";
+require  "../kgb/components/loadClasses.php";
+?>
+
 <main>
-    <?php
-    require  "../kgb/components/header.php";
-    require  "../kgb/components/loadClasses.php";
-    ?>
+
 
     <h1 class="text-center">Les Missions</h1>
 
@@ -108,5 +110,5 @@
 </main>
 
 <?php
-    require  "../kgb/components/footer.php";
-    ?>
+require  "../kgb/components/footer.php";
+?>

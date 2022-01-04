@@ -35,6 +35,7 @@ class SpecialityManager
         $request = $this->pdo->prepare("INSERT INTO dt_agents_specialities(id_agent, id_speciality) VALUES (:id_agent, :id_speciality)");
         $request->bindValue(':id_agent', $specialities->getAgent_id_uuid(), PDO::PARAM_INT);
         $request->bindValue(':id_speciality', $specialities->getId(), PDO::PARAM_INT);
+        var_dump($request);
         $request->execute();
     }
 

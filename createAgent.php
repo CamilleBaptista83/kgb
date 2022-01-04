@@ -10,19 +10,15 @@ $manager = new AgentsManager();
 $managerContries = new CountriesManager();
 $contries = $managerContries->getCountryName();
 
-// affichage des nom des spécialités dans l'input check
-$managerSpecialities = new SpecialityManager();
-$specialities = $managerSpecialities->getSpecialitiesName();
-
 
 if ($_POST) {
     $agent = new Agents($_POST);
     $manager->create($agent);
-
-    $specialities = new Speciality($_POST);
-    $managerSpecialities->create($specialities);
-
-    //echo '<script>window.location.href="../kgb/createAgentSpecialities.php"</script>';
+    ?>
+    <script>
+    window.location.href="../kgb/createAgentSpecialities.php?identification_code=<?=$_POST['identification_code'] ?>"
+    </script>
+    <?php
 }
 ?>
 
@@ -63,23 +59,6 @@ if ($_POST) {
                     ?>
 
                 </select>
-            </div>
-
-            <div class="form-group col-sm-6">
-                <h2>Spécilaités</h2>
-
-                <?php
-
-                foreach ($specialities as $speciality) {
-                ?>
-                    <input name="id_speciality" class="form-check-input" type="checkbox" value="<?= $speciality->getId() ?>" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        <?= $speciality->getSpe_name() ?>
-                    </label>
-                <?php
-                }
-                ?>
-            </div>
 
             <div>
                 <input type="submit" value="Ajouter l'agent" class="btn btn-danger">
