@@ -117,6 +117,41 @@ require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/loadClasses.php";
             <a href="./actions/contacts/createContact.php" class="btn btn-danger">Ajouter un Contact</a>
 
 
+
+            <?php
+
+            // PLANQUES
+
+            // creation d'un nouvel obj
+            $manager = new PlanquesManager();
+            // appel de la fonction get all pour récupérer les données
+            $planques = $manager->getAll();
+            ?>
+
+            <h2>PLANQUES</h2>
+
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($planques as $planque) {
+                        require "../kgb/vue/affichage_planques.php";
+                    }
+                    ?>
+                </tbody>
+            </table>
+
+            <a href="./actions/contacts/createContact.php" class="btn btn-danger">Ajouter une planques</a>
+
+
         </div>
 
     </section>

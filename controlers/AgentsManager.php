@@ -85,7 +85,7 @@ class AgentsManager
 
     public function getAll()
     {
-        $request = $this->pdo->query("SELECT * FROM dt_agents LEFT JOIN dt_countries ON dt_agents.id_country = dt_countries.id");
+        $request = $this->pdo->query("SELECT * FROM dt_agents LEFT JOIN dt_countries ON dt_agents.id_country = dt_countries.id ORDER BY identification_code ASC");
         $agents = array();
         while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
             $agents[] = new Agents($datas);

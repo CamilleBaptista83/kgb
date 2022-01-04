@@ -70,7 +70,7 @@ class CiblesManager
 
     public function getAll()
     {
-        $request = $this->pdo->query("SELECT * FROM dt_target LEFT JOIN dt_countries ON dt_target.id_country = dt_countries.id");
+        $request = $this->pdo->query("SELECT * FROM dt_target LEFT JOIN dt_countries ON dt_target.id_country = dt_countries.id ORDER BY last_name ASC");
         $cibles = array();
         while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
             $cibles[] = new Cibles($datas);

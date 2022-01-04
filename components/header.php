@@ -38,9 +38,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="../admin/logPage.php">Admin</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                            </li>
                         </ul>
                     </div>
                     <form class="d-flex">
