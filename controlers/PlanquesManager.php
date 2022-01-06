@@ -42,11 +42,12 @@ class PlanquesManager
 
     public function update(Planques $planque)
     {
-        $request = $this->pdo->prepare("UPDATE dt_stakeout(code, adress, id_country, id_type) SET code=:code,  adress=:adress, id_country=:id_country, id_type=:id_type WHERE id=:id");
+        $request = $this->pdo->prepare("UPDATE `dt_stakeout` SET code=:code,  adress=:adress, id_country=:id_country, id_type=:id_type WHERE id=:id");
         $request->bindValue(':code', $planque->getCode(), PDO::PARAM_STR);
         $request->bindValue(':adress', $planque->getAdress(), PDO::PARAM_STR);
         $request->bindValue(':id_country', $planque->getId_country(), PDO::PARAM_INT);
         $request->bindValue(':id_type', $planque->getId_type(), PDO::PARAM_INT);
+        $request->bindValue(':id', $planque->getId(), PDO::PARAM_STR);
         $request->execute();
     }
 
@@ -59,8 +60,14 @@ class PlanquesManager
 
     public function getById(string $id)
     {
-        $request = $this->pdo->prepare("SELECT * FROM dt_stakeout WHERE id=:id");
-        $request->bindValue(':id', $id, PDO::PARAM_STR);
+        $request = $this->pdo->prepare("SELECT dt_stakeout.id , dt_stakeout.code, dt_stakeout.adress, dt_stakeout.id_country, dt_stakeout.id_type,
+        dt_countries.name AS name_country,
+        dt_stakeout_type.name AS name_type
+        FROM dt_stakeout
+        LEFT JOIN dt_stakeout_type ON dt_stakeout.id_type = dt_stakeout_type.id
+        LEFT JOIN dt_countries ON dt_stakeout.id_country = dt_countries.id WHERE dt_stakeout.id= :id");
+        $request->bindValue(':id', $id, PDO::PARAM_INT);
+        $request->execute();
         $data = $request->fetch();
         return new Planques($data);
     }

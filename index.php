@@ -123,9 +123,9 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
             // PLANQUES
 
             // creation d'un nouvel obj
-            $manager = new PlanquesManager();
+            $managerPlanques = new PlanquesManager();
             // appel de la fonction get all pour récupérer les données
-            $planques = $manager->getAll();
+            $planques = $managerPlanques->getAll();
             ?>
 
             <h2>PLANQUES</h2>

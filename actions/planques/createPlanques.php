@@ -1,7 +1,7 @@
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/header.php";
-require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/loadClasses.php";
+require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/header.php";
+require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
 
 
 $manager = new PlanquesManager();
@@ -16,11 +16,11 @@ $planqueTypes = $managerPlanqueTypes->getAll();
 if ($_POST) {
     $planque = new Planques($_POST);
     $manager->create($planque);
-    ?>
+?>
     <script>
-    window.location.href="../../index.php"
+        window.location.href = "../../index.php"
     </script>
-    <?php
+<?php
 }
 ?>
 
@@ -54,7 +54,7 @@ if ($_POST) {
 
                 </select>
 
-            <div>
+            </div>
 
             <div class="form-group col-sm-6">
                 <label for="form-label">Choisir un type : </label>
@@ -71,6 +71,7 @@ if ($_POST) {
                     ?>
 
                 </select>
+            </div>
 
             <div>
                 <input type="submit" value="Ajouter la planque" class="btn btn-danger">
@@ -80,6 +81,6 @@ if ($_POST) {
 
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT'].'/kgb/components/footer.php';
+require  $_SERVER['DOCUMENT_ROOT'] . '/kgb/components/footer.php';
 
 ?>
