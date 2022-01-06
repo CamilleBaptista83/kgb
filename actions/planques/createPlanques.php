@@ -9,10 +9,12 @@ $manager = new PlanquesManager();
 // affichage des nom de pays dans l'input select
 $managerContries = new CountriesManager();
 $contries = $managerContries->getCountryName();
-
+// affichage des nom des types de planque dans l'input select
+$managerPlanqueTypes = new PlanqueTypesManager();
+$planqueTypes = $managerPlanqueTypes->getAll();
 
 if ($_POST) {
-    $planque = new planques($_POST);
+    $planque = new Planques($_POST);
     $manager->create($planque);
     ?>
     <script>
@@ -57,13 +59,13 @@ if ($_POST) {
             <div class="form-group col-sm-6">
                 <label for="form-label">Choisir un type : </label>
                 <select name='id_type' class="form-select" aria-label="Default select example">
-                    <option selected>Choisir votre pays</option>
+                    <option selected>Choisir votre Type</option>
 
                     <?php
 
-                    foreach ($contries as $country) {
+                    foreach ($planqueTypes as $planqueType) {
                     ?>
-                        <option value="<?= $country->getId() ?>"><?= $country->getName() ?></option>
+                        <option value="<?= $planqueType->getId() ?>"><?= $planqueType->getName() ?></option>
                     <?php
                     }
                     ?>

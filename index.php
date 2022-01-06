@@ -1,7 +1,7 @@
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/header.php";
-require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/loadClasses.php";
+require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/header.php";
+require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
 ?>
 
 <main>
@@ -149,7 +149,41 @@ require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/loadClasses.php";
                 </tbody>
             </table>
 
-            <a href="./actions/contacts/createContact.php" class="btn btn-danger">Ajouter une planques</a>
+            <a href="./actions/planques/createPlanques.php" class="btn btn-danger">Ajouter une planques</a>
+
+
+            <?php
+
+            // MISSIONS
+
+            // creation d'un nouvel obj
+            $managerMission = new MissionsManager();
+            // appel de la fonction get all pour récupérer les données
+            $missions = $managerMission->getAll();
+            ?>
+
+            <h2>MISSIONS</h2>
+
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($missions as $mission) {
+                        require "../kgb/vue/affichage_missions.php";
+                    }
+                    ?>
+                </tbody>
+            </table>
+
+            <a href="./actions/missions/createMission.php" class="btn btn-danger">Ajouter une Mission</a>
 
 
         </div>
@@ -158,5 +192,5 @@ require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/loadClasses.php";
 </main>
 
 <?php
-require  $_SERVER['DOCUMENT_ROOT'].'/kgb/components/footer.php';
+require  $_SERVER['DOCUMENT_ROOT'] . '/kgb/components/footer.php';
 ?>
