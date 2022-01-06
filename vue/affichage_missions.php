@@ -4,7 +4,13 @@
     <td><?= $mission->getDescription() ?></td>
     <td><?= $mission->getCode_name() ?></td>
     <td><?= $mission->getStart() ?></td>
-    <td><?= $mission->getEnd() ?></td>
+    <td><?php 
+    if(!empty($mission->getEnd())){
+        echo $mission->getEnd();
+    }else{
+        echo 'Non connue';
+    }
+     ?></td>
     <td><?= $mission->getMission_type_name() ?></td>
     <td><?= $mission->getCountry_name() ?></td>
     <td><?= $mission->getMission_statut_name() ?></td>

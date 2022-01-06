@@ -21,11 +21,9 @@ $specialities = $managerSpeciality->getSpecialitiesName();
 
 if ($_POST) {
     $mission->hydrate($_POST);
-    var_dump($mission);
-
     $manager->update($mission);
 
-    echo '<script>window.location.href="../kgb/index.php"</script>';
+    echo '<script>window.location.href="../../index.php"</script>';
 }
 ?>
 

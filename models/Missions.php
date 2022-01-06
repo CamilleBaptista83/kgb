@@ -153,11 +153,18 @@ class Missions
      *
      * @return  self
      */ 
-    public function setEnd(string $end)
+    public function setEnd($end)
     {
-        $this->end = $end;
+        if(empty($end)){
+            $this->end = NULL;
 
-        return $this;
+            return $this;
+        }else{
+            $this->end = $end;
+
+            return $this;
+        }
+
     }
 
     /**

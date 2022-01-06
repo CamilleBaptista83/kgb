@@ -66,7 +66,7 @@ class MissionsManager
         $request->bindValue(':id_country', $mission->getId_country(), PDO::PARAM_INT);
         $request->bindValue(':id_statut', $mission->getId_statut(), PDO::PARAM_INT);
         $request->bindValue(':id_speciality', $mission->getId_speciality(), PDO::PARAM_INT);
-        $request->bindValue(':mission_id_uuid', $mission->getMission_id_uuid(), PDO::PARAM_INT);
+        $request->bindValue(':mission_id_uuid', $mission->getMission_id_uuid(), PDO::PARAM_STR);
         $request->execute();
     }
 
@@ -94,13 +94,13 @@ class MissionsManager
         $request->bindValue(':mission_id_uuid', $mission_id_uuid, PDO::PARAM_STR);
         $request->execute();
         $data = $request->fetch();
-        return new missions($data);
+        return new Missions($data);
     }
 
     public function getAll()
     {
         $request = $this->pdo->query("SELECT dt_missions.mission_id_uuid, dt_missions.title ,dt_missions.description , dt_missions.code_name,dt_missions.start, dt_missions.end, 
-        dt_missions.id_type, dt_missions.id_country, dt_missions.id_statut, dt_missions.id_speciality
+        dt_missions.id_type, dt_missions.id_country, dt_missions.id_statut, dt_missions.id_speciality,
         dt_mission_type.name AS mission_type_name,
         dt_countries.name AS country_name,
         dt_mission_statut.name AS mission_statut_name,
@@ -113,7 +113,7 @@ class MissionsManager
         ORDER BY title ASC");
         $missions = array();
         while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
-            $missions[] = new missions($datas);
+            $missions[] = new Missions($datas);
         }
         return $missions;
     }
