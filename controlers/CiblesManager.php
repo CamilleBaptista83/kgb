@@ -55,7 +55,7 @@ class CiblesManager
 
     public function delete(string $target_id_uuid)
     {
-        $request = $this->pdo->prepare("DELETE * FROM dt_target WHERE target_id_uuid=:target_id_uuid");
+        $request = $this->pdo->prepare("DELETE FROM `dt_target` WHERE target_id_uuid=:target_id_uuid");
         $request->bindValue(':target_id_uuid', $target_id_uuid, PDO::PARAM_STR);
         $request->execute();
     }
