@@ -9,5 +9,5 @@ $manager->delete($_GET['id']);
 ?>
 
 <script>
-    window.location.href="<?php echo $_SERVER['DOCUMENT_ROOT'].'/kgb/index.php'; ?>"
+    window.location.href='../../index.php'
 </script>

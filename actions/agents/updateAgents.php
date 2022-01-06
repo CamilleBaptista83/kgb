@@ -59,7 +59,7 @@ if ($_POST) {
             </div>
 
             <div>
-                <input type="submit" value="Modifier l'Agent" class="btn btn-danger">
+                <input type="submit" value="Suivant" class="btn btn-danger">
             </div>
         </div>
     </form>

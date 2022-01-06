@@ -16,7 +16,6 @@ if ($_POST) {
         foreach ($_POST['id'] as $value) {
             $data = array('id' => $value, 'agent_id_uuid' => $agent->getAgent_id_uuid());
             $specialities = new Speciality($data);
-            var_dump($specialities);
             $managerSpecialities->create($specialities);
             echo '<script>window.location.href="../../index.php"</script>';
         }
