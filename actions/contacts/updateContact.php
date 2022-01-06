@@ -14,12 +14,12 @@ if ($_POST) {
     $contact->hydrate($_POST);
     $manager->update($contact);
 
-    echo '<script>window.location.href="../kgb/index.php"</script>';
+    echo '<script>window.location.href="../../index.php"</script>';
 }
 ?>
 
 <div class="container">
-    <h2 class="text-center">Modifier l'contact <?= $contact->getCode_name() ?></h2>
+    <h2 class="text-center">Modifier le Contact <?= $contact->getCode_name() ?></h2>
     <form method="post">
         <div class="row">
             <div class="form-group col-sm-6">

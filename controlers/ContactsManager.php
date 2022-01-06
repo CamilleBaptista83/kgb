@@ -30,25 +30,26 @@ class ContactsManager
         return $this;
     }
 
-    public function create(Contacts $agent)
+    public function create(Contacts $contact)
     {
         $request = $this->pdo->prepare("INSERT INTO dt_contacts(contact_id_uuid, code_name, first_name, last_name, birth_date, id_country) VALUES (UUID(), :code_name,  :first_name, :last_name, :birth_date, :id_country)");
-        $request->bindValue(':code_name', $agent->getCode_name(), PDO::PARAM_STR);
-        $request->bindValue(':first_name', $agent->getFirst_name(), PDO::PARAM_STR);
-        $request->bindValue(':last_name', $agent->getLast_name(), PDO::PARAM_STR);
-        $request->bindValue(':birth_date', $agent->getBirth_date(), PDO::PARAM_STR);
-        $request->bindValue(':id_country', $agent->getId_country(), PDO::PARAM_INT);
+        $request->bindValue(':code_name', $contact->getCode_name(), PDO::PARAM_STR);
+        $request->bindValue(':first_name', $contact->getFirst_name(), PDO::PARAM_STR);
+        $request->bindValue(':last_name', $contact->getLast_name(), PDO::PARAM_STR);
+        $request->bindValue(':birth_date', $contact->getBirth_date(), PDO::PARAM_STR);
+        $request->bindValue(':id_country', $contact->getId_country(), PDO::PARAM_INT);
         $request->execute();
     }
 
-    public function update(Contacts $agent)
+    public function update(Contacts $contact)
     {
-        $request = $this->pdo->prepare("UPDATE dt_contacts(code_name, first_name, last_name, birth_date, id_country) SET code_name=:code_name,  first_name=:first_name, last_name=:last_name, birth_date=:birth_date, id_country=:id_country WHERE contact_id_uuid=:contact_id_uuid");
-        $request->bindValue(':code_name', $agent->getCode_name(), PDO::PARAM_STR);
-        $request->bindValue(':first_name', $agent->getFirst_name(), PDO::PARAM_STR);
-        $request->bindValue(':last_name', $agent->getLast_name(), PDO::PARAM_STR);
-        $request->bindValue(':birth_date', $agent->getBirth_date(), PDO::PARAM_STR);
-        $request->bindValue(':id_country', $agent->getId_country(), PDO::PARAM_INT);
+        $request = $this->pdo->prepare("UPDATE `dt_contacts` SET code_name=:code_name,  first_name=:first_name, last_name=:last_name, birth_date=:birth_date, id_country=:id_country WHERE contact_id_uuid=:contact_id_uuid");
+        $request->bindValue(':code_name', $contact->getCode_name(), PDO::PARAM_STR);
+        $request->bindValue(':first_name', $contact->getFirst_name(), PDO::PARAM_STR);
+        $request->bindValue(':last_name', $contact->getLast_name(), PDO::PARAM_STR);
+        $request->bindValue(':birth_date', $contact->getBirth_date(), PDO::PARAM_STR);
+        $request->bindValue(':id_country', $contact->getId_country(), PDO::PARAM_INT);
+        $request->bindValue(':contact_id_uuid', $contact->getContact_id_uuid(), PDO::PARAM_STR);
         $request->execute();
     }
 
@@ -61,8 +62,9 @@ class ContactsManager
 
     public function getById(string $contact_id_uuid)
     {
-        $request = $this->pdo->prepare("SELECT * FROM dt_contacts WHERE contact_id_uuid=:contact_id_uuid");
+        $request = $this->pdo->prepare("SELECT * FROM dt_contacts LEFT JOIN dt_countries ON dt_contacts.id_country = dt_countries.id WHERE contact_id_uuid=:contact_id_uuid");
         $request->bindValue(':contact_id_uuid', $contact_id_uuid, PDO::PARAM_STR);
+        $request->execute();
         $data = $request->fetch();
         return new Contacts($data);
     }
@@ -70,11 +72,11 @@ class ContactsManager
     public function getAll()
     {
         $request = $this->pdo->query("SELECT * FROM dt_contacts LEFT JOIN dt_countries ON dt_contacts.id_country = dt_countries.id ORDER BY last_name ASC");
-        $agents = array();
+        $contact = array();
         while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
-            $agents[] = new Contacts($datas);
+            $contact[] = new Contacts($datas);
         }
-        return $agents;
+        return $contact;
     }
 
 }
