@@ -164,24 +164,11 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
 
             <h2>MISSIONS</h2>
 
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($missions as $mission) {
-                        require "../kgb/vue/affichage_missions.php";
-                    }
-                    ?>
-                </tbody>
-            </table>
+            <?php
+            foreach ($missions as $mission) {
+                require "../kgb/vue/affichage_missions.php";
+            }
+            ?>
 
             <a href="./actions/missions/createMission.php" class="btn btn-danger">Ajouter une Mission</a>
 

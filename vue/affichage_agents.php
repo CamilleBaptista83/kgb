@@ -1,3 +1,5 @@
+
+
 <tr>
     <th scope="row"><?= $agent->getAgent_id_uuid() ?></th>
     <td><?= $agent->getIdentification_code() ?></td>

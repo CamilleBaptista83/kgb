@@ -1,21 +1,13 @@
-<tr>
-    <th scope="row"><?= $mission->getMission_id_uuid() ?></th>
-    <td><?= $mission->getTitle() ?></td>
-    <td><?= $mission->getDescription() ?></td>
-    <td><?= $mission->getCode_name() ?></td>
-    <td><?= $mission->getStart() ?></td>
-    <td><?php 
-    if(!empty($mission->getEnd())){
-        echo $mission->getEnd();
-    }else{
-        echo 'Non connue';
-    }
-     ?></td>
-    <td><?= $mission->getMission_type_name() ?></td>
-    <td><?= $mission->getCountry_name() ?></td>
-    <td><?= $mission->getMission_statut_name() ?></td>
-    <td><?= $mission->getSpeciality_name() ?></td>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"><?= $mission->getTitle() ?></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><?= $mission->getCode_name() ?></h6>
+            <p class="card-text"><?= $mission->getDescription() ?></p>
+            <p class="card-text"><small class="text-muted"><?= $mission->getStart() ?> - <?= $mission->getEnd() ?></small></p>
+            <a href="../kgb/vue/affichage_mission_by_id.php?id=<?= $mission->getMission_id_uuid() ?>" class="btn btn-danger">En Savoir Plus</a>
 
-    <td><a href="../kgb/actions/missions/updateMission.php?id=<?= $mission->getMission_id_uuid() ?>" class="btn btn-danger">Edit</a></td>
-    <td><a href="../kgb/actions/missions/deleteMission.php?id=<?= $mission->getMission_id_uuid() ?>" class="btn btn-danger">Delete</a></td>
-</tr>
+        </div>
+    </div>
+
+</div>

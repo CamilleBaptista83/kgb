@@ -42,7 +42,7 @@ class Missions
 
     /**
      * Get the value of mission_id_uuid
-     */ 
+     */
     public function getMission_id_uuid()
     {
         return $this->mission_id_uuid;
@@ -52,7 +52,7 @@ class Missions
      * Set the value of mission_id_uuid
      *
      * @return  self
-     */ 
+     */
     public function setMission_id_uuid(string $mission_id_uuid)
     {
         $this->mission_id_uuid = $mission_id_uuid;
@@ -62,7 +62,7 @@ class Missions
 
     /**
      * Get the value of title
-     */ 
+     */
     public function getTitle()
     {
         return $this->title;
@@ -72,7 +72,7 @@ class Missions
      * Set the value of title
      *
      * @return  self
-     */ 
+     */
     public function setTitle(string $title)
     {
         $this->title = $title;
@@ -82,7 +82,7 @@ class Missions
 
     /**
      * Get the value of description
-     */ 
+     */
     public function getDescription()
     {
         return $this->description;
@@ -92,7 +92,7 @@ class Missions
      * Set the value of description
      *
      * @return  self
-     */ 
+     */
     public function setDescription(string $description)
     {
         $this->description = $description;
@@ -102,7 +102,7 @@ class Missions
 
     /**
      * Get the value of code_name
-     */ 
+     */
     public function getCode_name()
     {
         return $this->code_name;
@@ -112,7 +112,7 @@ class Missions
      * Set the value of code_name
      *
      * @return  self
-     */ 
+     */
     public function setCode_name(string $code_name)
     {
         $this->code_name = $code_name;
@@ -122,7 +122,7 @@ class Missions
 
     /**
      * Get the value of start
-     */ 
+     */
     public function getStart()
     {
         return $this->start;
@@ -132,7 +132,7 @@ class Missions
      * Set the value of start
      *
      * @return  self
-     */ 
+     */
     public function setStart(string $start)
     {
         $this->start = $start;
@@ -142,34 +142,38 @@ class Missions
 
     /**
      * Get the value of end
-     */ 
+     */
     public function getEnd()
     {
-        return $this->end;
+
+        if (!empty($this->end)) {
+            return $this->end;
+        } else {
+            echo 'Non connue';
+        }
     }
 
     /**
      * Set the value of end
      *
      * @return  self
-     */ 
+     */
     public function setEnd($end)
     {
-        if(empty($end)){
+        if (empty($end)) {
             $this->end = NULL;
 
             return $this;
-        }else{
+        } else {
             $this->end = $end;
 
             return $this;
         }
-
     }
 
     /**
      * Get the value of id_type
-     */ 
+     */
     public function getId_type()
     {
         return $this->id_type;
@@ -179,7 +183,7 @@ class Missions
      * Set the value of id_type
      *
      * @return  self
-     */ 
+     */
     public function setId_type(int $id_type)
     {
         $this->id_type = $id_type;
@@ -189,7 +193,7 @@ class Missions
 
     /**
      * Get the value of id_country
-     */ 
+     */
     public function getId_country()
     {
         return $this->id_country;
@@ -199,7 +203,7 @@ class Missions
      * Set the value of id_country
      *
      * @return  self
-     */ 
+     */
     public function setId_country(int $id_country)
     {
         $this->id_country = $id_country;
@@ -209,7 +213,7 @@ class Missions
 
     /**
      * Get the value of id_statut
-     */ 
+     */
     public function getId_statut()
     {
         return $this->id_statut;
@@ -219,7 +223,7 @@ class Missions
      * Set the value of id_statut
      *
      * @return  self
-     */ 
+     */
     public function setId_statut(int $id_statut)
     {
         $this->id_statut = $id_statut;
@@ -229,7 +233,7 @@ class Missions
 
     /**
      * Get the value of id_speciality
-     */ 
+     */
     public function getId_speciality()
     {
         return $this->id_speciality;
@@ -239,7 +243,7 @@ class Missions
      * Set the value of id_speciality
      *
      * @return  self
-     */ 
+     */
     public function setId_speciality(int $id_speciality)
     {
         $this->id_speciality = $id_speciality;
@@ -248,11 +252,11 @@ class Missions
     }
 
 
-    
+
 
     /**
      * Get the value of mission_type_name
-     */ 
+     */
     public function getMission_type_name()
     {
         return $this->mission_type_name;
@@ -262,7 +266,7 @@ class Missions
      * Set the value of mission_type_name
      *
      * @return  self
-     */ 
+     */
     public function setMission_type_name(string $mission_type_name)
     {
         $this->mission_type_name = $mission_type_name;
@@ -272,7 +276,7 @@ class Missions
 
     /**
      * Get the value of country_name
-     */ 
+     */
     public function getCountry_name()
     {
         return $this->country_name;
@@ -282,7 +286,7 @@ class Missions
      * Set the value of country_name
      *
      * @return  self
-     */ 
+     */
     public function setCountry_name(string $country_name)
     {
         $this->country_name = $country_name;
@@ -292,7 +296,7 @@ class Missions
 
     /**
      * Get the value of mission_statut_name
-     */ 
+     */
     public function getMission_statut_name()
     {
         return $this->mission_statut_name;
@@ -302,7 +306,7 @@ class Missions
      * Set the value of mission_statut_name
      *
      * @return  self
-     */ 
+     */
     public function setMission_statut_name(string $mission_statut_name)
     {
         $this->mission_statut_name = $mission_statut_name;
@@ -312,7 +316,7 @@ class Missions
 
     /**
      * Get the value of speciality_name
-     */ 
+     */
     public function getSpeciality_name()
     {
         return $this->speciality_name;
@@ -322,7 +326,7 @@ class Missions
      * Set the value of speciality_name
      *
      * @return  self
-     */ 
+     */
     public function setSpeciality_name(string $speciality_name)
     {
         $this->speciality_name = $speciality_name;
