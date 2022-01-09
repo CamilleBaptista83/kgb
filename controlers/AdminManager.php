@@ -92,13 +92,14 @@ class AdminManager
             if ($admin === false) {
                 // Si aucun utilisateur ne correspond au login entré, on affiche une erreur
                 echo 'Identifiants invalides';
-                $login = true ;
-                var_dump($login);
-
             } else {
                 // On vérifie le hash du password
                 if (password_verify($password, $admin['password'])) {
-                    echo 'Bienvenue ' . $admin['last_name'];
+                    echo 'Bienvenue Agent ' . $admin['last_name'];
+                    session_start();
+                    $_SESSION['last_name']= $admin['last_name'];
+                    $_SESSION['login'] = true;
+                    echo '<script>window.location.href="../admin.php"</script>';
                 } else {
                     echo 'Identifiants invalides';
                 }

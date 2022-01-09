@@ -8,7 +8,6 @@ $manager = new AdminManager();
 
 
 if ($_POST) {
-    var_dump($_POST);
     $manager->login($_POST['email'], $_POST['password']);
 }
 ?>
