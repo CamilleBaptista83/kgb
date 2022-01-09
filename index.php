@@ -25,29 +25,21 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
             ?>
             <h2>AGENTS</h2>
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="row">
 
-                    <?php
-                    // affichage agents
-                    foreach ($agents as $agent) {
-                        require "../kgb/vue/affichage_agents.php";
-                    }
-                    ?>
+                <?php
+                // affichage agents
+                foreach ($agents as $agent) {
+                    require "../kgb/vue/affichage_agents.php";
+                ?>
+                    <a href="../kgb/actions/agents/updateAgents.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Edit</a>
+                    <a href="../kgb/actions/agents/deleteAgents.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Delete</a>
+                <?php
+                }
+                ?>
 
-                </tbody>
-            </table>
-
-            <a href="./actions/agents/createAgent.php" class="btn btn-danger">Ajouter un agent</a>
-
+                <a href="./actions/agents/createAgent.php" class="btn btn-danger">Ajouter un agent</a>
+            </div>
             <?php
 
             // CIBLES
@@ -60,27 +52,20 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
 
             <h2>CIBLES</h2>
 
+            <div class="row">
+                <?php
+                foreach ($cibles as $cible) {
+                    require "../kgb/vue/affichage_cibles.php";
+                ?>
+                    <a href="../kgb/actions/cibles/updateCibles.php?id=<?= $cible->getTarget_id_uuid() ?>" class="btn btn-danger">Edit</a>
+                    <a href="../kgb/actions/cibles/deleteCibles.php?id=<?= $cible->getTarget_id_uuid() ?>" class="btn btn-danger">Delete</a>
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($cibles as $cible) {
-                        require "../kgb/vue/affichage_cibles.php";
-                    }
-                    ?>
-                </tbody>
-            </table>
+                <?php
+                }
+                ?>
 
-            <a href="./actions/cibles/createCibles.php" class="btn btn-danger">Ajouter une Cible</a>
-
+                <a href="./actions/cibles/createCibles.php" class="btn btn-danger">Ajouter une Cible</a>
+            </div>
 
 
             <?php
@@ -95,28 +80,20 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
 
             <h2>CONTACTS</h2>
 
+            <div class="row">
+                <?php
+                foreach ($contacts as $contact) {
+                    require "../kgb/vue/affichage_contacts.php";
+                ?>
+                    <a href="../kgb/actions/contacts/updateContact.php?id=<?= $contact->getContact_id_uuid() ?>" class="btn btn-danger">Edit</a>
+                    <a href="../kgb/actions/contacts/deleteContact.php?id=<?= $contact->getContact_id_uuid() ?>" class="btn btn-danger">Delete</a>
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($contacts as $contact) {
-                        require "../kgb/vue/affichage_contacts.php";
-                    }
-                    ?>
-                </tbody>
-            </table>
+                <?php
+                }
+                ?>
+                <a href="./actions/contacts/createContact.php" class="btn btn-danger">Ajouter un Contact</a>
 
-            <a href="./actions/contacts/createContact.php" class="btn btn-danger">Ajouter un Contact</a>
-
-
+            </div>
 
             <?php
 
@@ -130,25 +107,18 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
 
             <h2>PLANQUES</h2>
 
+            <div class="row">
+                <?php
+                foreach ($planques as $planque) {
+                    require "../kgb/vue/affichage_planques.php";
+                ?>
+                    <a href="../kgb/actions/planques/updatePlanques.php?id=<?= $planque->getId() ?>" class="btn btn-danger">Edit</a>
+                    <a href="../kgb/actions/planques/deletePlanques.php?id=<?= $planque->getId() ?>" class="btn btn-danger">Delete</a>
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($planques as $planque) {
-                        require "../kgb/vue/affichage_planques.php";
-                    }
-                    ?>
-                </tbody>
-            </table>
-
+                <?php
+                }
+                ?>
+            </div>
             <a href="./actions/planques/createPlanques.php" class="btn btn-danger">Ajouter une planques</a>
 
 

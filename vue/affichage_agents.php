@@ -1,34 +1,29 @@
-
-
-<tr>
-    <th scope="row"><?= $agent->getAgent_id_uuid() ?></th>
-    <td><?= $agent->getIdentification_code() ?></td>
-    <td><?= $agent->getFirst_name() ?></td>
-    <td><?= $agent->getLast_name() ?></td>
-    <td><?= $agent->getBirth_date() ?></td>
-    <td><?= $agent->getName() ?></td>
-
-    <td>
-        <?php
-        $manager = new SpecialityManager();
-
-        $specialities = $manager->getSpecialityById($agent->getAgent_id_uuid());
-
-        foreach ($specialities as $speciality) {
-            if (!$speciality->getSpe_name()) {
-        ?>
-                <a href="./createAgentSpecialities.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Ajouter une Spécialités</a>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"><?= $agent->getIdentification_code() ?></h5>
+        <p class="card-text"><?= $agent->getFirst_name();
+                                $agent->getLast_name() ?> </p>
+        <p class="card-text"><?= $agent->getBirth_date() ?> </p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><?= $agent->getName() ?></li>
             <?php
-            } else {
+            $manager = new SpecialityManager();
+
+            $specialities = $manager->getSpecialityById($agent->getAgent_id_uuid());
+
+            foreach ($specialities as $speciality) {
+                if (!$speciality->getSpe_name()) {
             ?>
-                <p><?= $speciality->getSpe_name() ?></p>
-        <?php
+                    <li class="list-group-item">Aucune Spécialité</li>
+                <?php
+                } else {
+                ?>
+                    <li class="list-group-item"><?= $speciality->getSpe_name() ?></li>
+            <?php
+                }
             }
-        }
-        ?>
-
-    </td>
-
-    <td><a href="../kgb/actions/agents/updateAgents.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Edit</a></td>
-    <td><a href="../kgb/actions/agents/deleteAgents.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Delete</a></td>
-</tr>
+            ?>
+        </ul>
+        <p class="card-text"><small class="text-muted"><?= $agent->getAgent_id_uuid() ?></small></p>
+    </div>
+</div>

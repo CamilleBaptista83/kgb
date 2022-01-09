@@ -101,11 +101,16 @@ class AgentsManager
         $request = $this->pdo->prepare("SELECT * FROM dt_agents_missions 
         LEFT JOIN dt_missions ON dt_agents_missions.id_mission = dt_missions.mission_id_uuid 
         LEFT JOIN dt_agents ON dt_agents_missions.id_agent = dt_agents.agent_id_uuid 
+        LEFT JOIN dt_countries ON dt_agents.id_country = dt_countries.id
         WHERE mission_id_uuid= :mission_id_uuid");
         $request->bindValue(':mission_id_uuid', $id_mission, PDO::PARAM_STR);
         $request->execute();
-        $data = $request->fetch();
-        return new Agents($data);
+        $agents = array();
+        while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
+            $agents[] = new Agents($datas);
+        }
+        return $agents;
+
     }
 
 }

@@ -8,7 +8,16 @@ $manager = new MissionsManager();
 $mission = $manager->getById($_GET['id']);
 
 $managerAgents = new AgentsManager();
-$agent = $managerAgents->getByMission($_GET['id']);
+$agents = $managerAgents->getByMission($_GET['id']);
+
+$managerCibles = new CiblesManager();
+$cibles = $managerCibles->getByMission($_GET['id']);
+
+$managerContacts = new ContactsManager();
+$contacts = $managerContacts->getByMission($_GET['id']);
+
+$managerPlanques = new PlanquesManager();
+$planques = $managerPlanques->getByMission($_GET['id']);
 ?>
 
 <div class="container">
@@ -43,9 +52,53 @@ $agent = $managerAgents->getByMission($_GET['id']);
         </tbody>
     </table>
 
-    <?php
-    require "./affichage_agents.php";
-    ?>
+    <hr>
+
+    <h2>AGENTS</h2>
+    <div class="row">
+        <?php
+        // affichage agents
+        foreach ($agents as $agent) {
+            require "./affichage_agents.php";
+        }
+        ?>
+    </div>
+    <hr>
+
+
+    <h2>CIBLES</h2>
+    <div class="row">
+        <?php
+        // affichage agents
+        foreach ($cibles as $cible) {
+            require "./affichage_cibles.php";
+        }
+        ?>
+    </div>
+    <hr>
+
+
+    <h2>CONTACTS</h2>
+    <div class="row">
+        <?php
+        // affichage agents
+        foreach ($contacts as $contact) {
+            require "./affichage_contacts.php";
+        }
+        ?>
+    </div>
+    <hr>
+
+
+    <h2>PLANQUES</h2>
+    <div class="row">
+        <?php
+        // affichage agents
+        foreach ($planques as $planque) {
+            require "./affichage_planques.php";
+        }
+        ?>
+    </div>
 
     <a href="../kgb/actions/missions/updateMission.php?id=<?= $mission->getMission_id_uuid() ?>" class="btn btn-danger">Edit</a>
     <a href="../kgb/actions/missions/deleteMission.php?id=<?= $mission->getMission_id_uuid() ?>" class="btn btn-danger">Delete</a>

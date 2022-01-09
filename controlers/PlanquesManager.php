@@ -87,4 +87,26 @@ class PlanquesManager
         return $planques;
     }
 
+    // MISSIONS
+
+    public function getByMission(string $id_mission)
+    {
+        $request = $this->pdo->prepare("SELECT dt_mission_stakeout.id_mission , dt_mission_stakeout.id_stakeout,
+        dt_stakeout.id , dt_stakeout.code, dt_stakeout.adress, dt_stakeout.id_country, dt_stakeout.id_type,
+        dt_countries.name AS name_country,
+        dt_stakeout_type.name AS name_type
+        FROM dt_mission_stakeout 
+        LEFT JOIN dt_missions ON dt_mission_stakeout.id_mission = dt_missions.mission_id_uuid 
+        LEFT JOIN dt_stakeout ON dt_mission_stakeout.id_stakeout = dt_stakeout.id 
+        LEFT JOIN dt_stakeout_type ON dt_stakeout.id_type = dt_stakeout_type.id
+        LEFT JOIN dt_countries ON dt_stakeout.id_country = dt_countries.id
+        WHERE mission_id_uuid= :mission_id_uuid");
+        $request->bindValue(':mission_id_uuid', $id_mission, PDO::PARAM_STR);
+        $request->execute();
+        $contacts = array();
+        while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
+            $planques[] = new Planques($datas);
+        }
+        return $planques;
+    }
 }

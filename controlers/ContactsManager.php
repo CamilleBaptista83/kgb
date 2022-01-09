@@ -79,4 +79,21 @@ class ContactsManager
         return $contact;
     }
 
+    // MISSIONS
+
+    public function getByMission(string $id_mission)
+    {
+        $request = $this->pdo->prepare("SELECT * FROM dt_contacts_missions 
+                LEFT JOIN dt_missions ON dt_contacts_missions.id_mission = dt_missions.mission_id_uuid 
+                LEFT JOIN dt_contacts ON dt_contacts_missions.id_contact = dt_contacts.contact_id_uuid 
+                LEFT JOIN dt_countries ON dt_contacts.id_country = dt_countries.id
+                WHERE mission_id_uuid= :mission_id_uuid");
+        $request->bindValue(':mission_id_uuid', $id_mission, PDO::PARAM_STR);
+        $request->execute();
+        $contacts = array();
+        while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
+            $contacts[] = new Contacts($datas);
+        }
+        return $contacts;
+    }
 }

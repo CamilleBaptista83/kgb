@@ -1,10 +1,11 @@
-<tr>
-<th scope="row"><?= $contact->getContact_id_uuid() ?></th>
-<td><?= $contact->getCode_name() ?></td>
-<td><?= $contact->getFirst_name() ?></td>
-<td><?= $contact->getLast_name() ?></td>
-<td><?= $contact->getBirth_date() ?></td>
-<td><?= $contact->getName() ?></td>
-<td><a href="../kgb/actions/contacts/updateContact.php?id=<?= $contact->getContact_id_uuid() ?>" class="btn btn-danger">Edit</a></td>
-<td><a href="../kgb/actions/contacts/deleteContact.php?id=<?= $contact->getContact_id_uuid() ?>" class="btn btn-danger">Delete</a></td>
-</tr>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"><?= $contact->getCode_name() ?></h5>
+        <p class="card-text"> <span><?= $contact->getLast_name() ?> </span><?= $contact->getFirst_name() ?></p>
+        <p class="card-text"><?= $contact->getBirth_date() ?> </p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><?= $contact->getName() ?></li>
+        </ul>
+        <p class="card-text"><small class="text-muted"><?= $contact->getContact_id_uuid() ?></small></p>
+    </div>
+</div>
