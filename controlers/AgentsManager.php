@@ -144,4 +144,12 @@ class AgentsManager
         }
         return $agents;
     }
+
+    public function asignAgentToMission(Agents $agent)
+    {
+        $request = $this->pdo->prepare("INSERT INTO dt_agents_missions(agent_id_uuid, mission_id_uuid) VALUES (:agent_id_uuid, :mission_id_uuid)");
+        $request->bindValue(':agent_id_uuid', $agent->getAgent_id_uuid(), PDO::PARAM_STR);
+        $request->bindValue(':mission_id_uuid', $agent->getMission_id_uuid(), PDO::PARAM_STR);
+        $request->execute();
+    }
 }

@@ -14,10 +14,13 @@ $managerAgents = new AgentsManager();
 $agents = $managerAgents->getAgentsListForAddMission($mission->getId_country(), $mission->getId_speciality());
 
 if ($_POST) {
-    if (!empty($_POST['id'])) {
-        foreach ($_POST['id'] as $value) {
-            $data = array('id' => $value, 'agent_id_uuid' => $mission->getMission_id_uuid());
-            $agents = new Speciality($data);
+    if (!empty($_POST['agent_id_uuid'])) {
+        foreach ($_POST['agent_id_uuid'] as $value) {
+            $data = array(
+                'mission_id_uuid' => $mission->getMission_id_uuid(), 
+                'agent_id_uuid' => $value
+            );
+            $agents = new Agents($data);
             var_dump($agents);
             //$manageragents->create($agents);
             echo '<script>window.location.href="../../admin.php"</script>';

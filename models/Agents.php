@@ -12,6 +12,8 @@ class Agents
     private $name;
     private $id_speciality;
 
+    private $mission_id_uuid;
+
     public function __construct(array $data = array())
     {
         if (!empty($data)) {
@@ -195,6 +197,26 @@ class Agents
     public function setId_speciality($id_speciality)
     {
         $this->id_speciality = $id_speciality;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of mission_id_uuid
+     */ 
+    public function getMission_id_uuid()
+    {
+        return $this->mission_id_uuid;
+    }
+
+    /**
+     * Set the value of mission_id_uuid
+     *
+     * @return  self
+     */ 
+    public function setMission_id_uuid($mission_id_uuid)
+    {
+        $this->mission_id_uuid = $mission_id_uuid;
 
         return $this;
     }
