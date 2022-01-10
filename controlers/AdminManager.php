@@ -95,7 +95,6 @@ class AdminManager
             } else {
                 // On vérifie le hash du password
                 if (password_verify($password, $admin['password'])) {
-                    echo 'Bienvenue Agent ' . $admin['last_name'];
                     session_start();
                     $_SESSION['last_name']= $admin['last_name'];
                     $_SESSION['login'] = true;

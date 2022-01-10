@@ -103,7 +103,7 @@ class PlanquesManager
         WHERE mission_id_uuid= :mission_id_uuid");
         $request->bindValue(':mission_id_uuid', $id_mission, PDO::PARAM_STR);
         $request->execute();
-        $contacts = array();
+        $planques = array();
         while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
             $planques[] = new Planques($datas);
         }

@@ -14,7 +14,7 @@ if ($_POST) {
     $contact->hydrate($_POST);
     $manager->update($contact);
 
-    echo '<script>window.location.href="../../index.php"</script>';
+    echo '<script>window.location.href="../../admin.php"</script>';
 }
 ?>
 

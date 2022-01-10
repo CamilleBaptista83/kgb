@@ -9,5 +9,5 @@ $manager->delete($_GET['id']);
 ?>
 
 <script>
-    window.location.href='../../index.php'
+    window.location.href='../../admin.php'
 </script>

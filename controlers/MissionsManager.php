@@ -97,6 +97,27 @@ class MissionsManager
         return new Missions($data);
     }
 
+
+    public function getByCode(string $code_name)
+    {
+        $request = $this->pdo->prepare("SELECT dt_missions.mission_id_uuid, dt_missions.title ,dt_missions.description , dt_missions.code_name,dt_missions.start, dt_missions.end,
+        dt_missions.id_type, dt_missions.id_country, dt_missions.id_statut, dt_missions.id_speciality, 
+        dt_mission_type.name AS mission_type_name,
+        dt_countries.name AS country_name,
+        dt_mission_statut.name AS mission_statut_name,
+        dt_specialities.name AS speciality_name 
+        FROM dt_missions 
+        LEFT JOIN dt_mission_type ON dt_missions.id_type = dt_mission_type.id
+        LEFT JOIN dt_countries ON dt_missions.id_country = dt_countries.id
+        LEFT JOIN dt_mission_statut ON dt_missions.id_statut = dt_mission_statut.id
+        LEFT JOIN dt_specialities ON dt_missions.id_speciality = dt_specialities.id
+        WHERE code_name= :code_name");
+        $request->bindValue(':code_name', $code_name, PDO::PARAM_STR);
+        $request->execute();
+        $data = $request->fetch();
+        return new Missions($data);
+    }
+
     public function getAll()
     {
         $request = $this->pdo->query("SELECT dt_missions.mission_id_uuid, dt_missions.title ,dt_missions.description , dt_missions.code_name,dt_missions.start, dt_missions.end, 

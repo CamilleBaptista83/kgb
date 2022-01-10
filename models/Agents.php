@@ -10,6 +10,7 @@ class Agents
     private $birth_date;
     private $id_country;
     private $name;
+    private $id_speciality;
 
     public function __construct(array $data = array())
     {
@@ -174,6 +175,26 @@ class Agents
     public function setName(string $name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of id_speciality
+     */ 
+    public function getId_speciality()
+    {
+        return $this->id_speciality;
+    }
+
+    /**
+     * Set the value of id_speciality
+     *
+     * @return  self
+     */ 
+    public function setId_speciality($id_speciality)
+    {
+        $this->id_speciality = $id_speciality;
 
         return $this;
     }

@@ -73,7 +73,7 @@ class AgentsManager
         $data = $request->fetch();
         return new Agents($data);
     }
-    
+
     public function getByCode(int $identification_code)
     {
         $request = $this->pdo->prepare("SELECT * FROM dt_agents LEFT JOIN dt_countries ON dt_agents.id_country = dt_countries.id WHERE identification_code= :identification_code");
@@ -110,7 +110,38 @@ class AgentsManager
             $agents[] = new Agents($datas);
         }
         return $agents;
-
     }
 
+    // récupérer la liste des agents qui sont égligible sur une mission, pas le même id pays
+    public function getAgentsListForAddMission(string $id_pays_mission)
+    {
+        $request = $this->pdo->prepare("SELECT * FROM dt_agents
+        WHERE id_country != :id_pays_mission");
+        $request->bindValue(':id_pays_mission', $id_pays_mission, PDO::PARAM_INT);
+        $request->execute();
+        $agents = array();
+        while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
+            $agents[] = new Agents($datas);
+        }
+        return $agents;
+    }
+
+    // récupérer la liste des agents qui sont égligible sur une mission, pas le même id pays
+    public function getAgentsListForAddMissionAndSpeciliality(string $id_pays_mission, int $id_speciality)
+    {
+        $request = $this->pdo->prepare("SELECT dt_agents.agent_id_uuid, dt_agents.first_name, dt_agents.last_name, 
+        dt_agents_specialities.id_agent, 
+        dt_agents_specialities.id_speciality
+        FROM dt_agents
+        LEFT JOIN dt_agents_specialities ON dt_agents.agent_id_uuid = dt_agents_specialities.id_agent 
+        WHERE id_country != :id_pays_mission AND dt_agents_specialities.id_speciality = :id_speciality");
+        $request->bindValue(':id_pays_mission', $id_pays_mission, PDO::PARAM_INT);
+        $request->bindValue(':id_speciality', $id_speciality, PDO::PARAM_INT);
+        $request->execute();
+        $agents = array();
+        while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
+            $agents[] = new Agents($datas);
+        }
+        return $agents;
+    }
 }

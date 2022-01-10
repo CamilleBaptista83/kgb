@@ -14,7 +14,7 @@ if ($_POST) {
     $cible->hydrate($_POST);
     $manager->update($cible);
 
-    echo '<script>window.location.href="../../index.php"</script>';
+    echo '<script>window.location.href="../../admin.php"</script>';
 }
 ?>
 

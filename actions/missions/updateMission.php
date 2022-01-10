@@ -23,7 +23,7 @@ if ($_POST) {
     $mission->hydrate($_POST);
     $manager->update($mission);
 
-    echo '<script>window.location.href="../../index.php"</script>';
+    echo '<script>window.location.href="../../admin.php"</script>';
 }
 ?>
 

@@ -23,7 +23,12 @@ if ($_POST) {
     $mission = new Missions($_POST);
     $manager->create($mission);
 
-    echo '<script>window.location.href="../../index.php"</script>';
+    ?>
+    <script>
+    window.location.href="./addAgentsToMission.php?code_name=<?=$_POST['code_name']?>"
+    </script>
+    <?php
+
 }
 ?>
 

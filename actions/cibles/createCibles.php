@@ -16,7 +16,7 @@ if ($_POST) {
     $manager->create($cible);
     ?>
     <script>
-    window.location.href="../../index.php"
+    window.location.href="../../admin.php"
     </script>
     <?php
 }

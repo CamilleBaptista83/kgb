@@ -17,7 +17,7 @@ if ($_POST) {
             $data = array('id' => $value, 'agent_id_uuid' => $agent->getAgent_id_uuid());
             $specialities = new Speciality($data);
             $managerSpecialities->create($specialities);
-            echo '<script>window.location.href="../../index.php"</script>';
+            echo '<script>window.location.href="../../admin.php"</script>';
         }
     }
 }

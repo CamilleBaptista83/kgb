@@ -15,7 +15,7 @@ if ($_POST) {
 
     $manager->update($agent);
 
-    echo '<script>window.location.href="../../index.php"</script>';
+    echo '<script>window.location.href="../../admin.php"</script>';
 }
 ?>
 

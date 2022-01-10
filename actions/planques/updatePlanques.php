@@ -18,7 +18,7 @@ if ($_POST) {
     $planque->hydrate($_POST);
     $manager->update($planque);
 
-    echo '<script>window.location.href="../../index.php"</script>';
+    echo '<script>window.location.href="../../admin.php"</script>';
 }
 ?>
 
