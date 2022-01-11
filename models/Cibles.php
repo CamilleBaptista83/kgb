@@ -11,6 +11,8 @@ class Cibles
     private $id_country;
     private $name;
 
+    private $mission_id_uuid;
+
     public function __construct(array $data)
     {
         $this->hydrate($data);
@@ -162,6 +164,26 @@ class Cibles
     public function setTarget_id_uuid($target_id_uuid)
     {
         $this->target_id_uuid = $target_id_uuid;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of mission_id_uuid
+     */ 
+    public function getMission_id_uuid()
+    {
+        return $this->mission_id_uuid;
+    }
+
+    /**
+     * Set the value of mission_id_uuid
+     *
+     * @return  self
+     */ 
+    public function setMission_id_uuid($mission_id_uuid)
+    {
+        $this->mission_id_uuid = $mission_id_uuid;
 
         return $this;
     }

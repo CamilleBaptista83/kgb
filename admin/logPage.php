@@ -4,7 +4,7 @@ session_start();
 require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/header.php";
 require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
 
-if ($_SESSION['login'] === true) {
+if (isset($_SESSION['login'])) {
     echo '<script>window.location.href="../admin.php"</script>';
 } else {
     $login = false;

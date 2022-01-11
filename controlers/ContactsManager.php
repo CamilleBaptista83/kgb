@@ -96,4 +96,25 @@ class ContactsManager
         }
         return $contacts;
     }
+
+    public function getContactsListForAddMission(string $id_pays_mission)
+    {
+        $request = $this->pdo->prepare("SELECT * FROM dt_contacts 
+        WHERE id_country = :id_pays_mission");
+        $request->bindValue(':id_pays_mission', $id_pays_mission, PDO::PARAM_INT);
+        $request->execute();
+        $contacts = array();
+        while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
+            $contacts[] = new Contacts($datas);
+        }
+        return $contacts;
+    }
+
+    public function asignContactsToMission(Contacts $contact)
+    {
+        $request = $this->pdo->prepare("INSERT INTO dt_targets_missions(id_contact, id_mission) VALUES (:id_contact, :id_mission)");
+        $request->bindValue(':id_contact', $contact->getContact_id_uuid(), PDO::PARAM_STR);
+        $request->bindValue(':id_mission', $contact->getMission_id_uuid(), PDO::PARAM_STR);
+        $request->execute();
+    }
 }
