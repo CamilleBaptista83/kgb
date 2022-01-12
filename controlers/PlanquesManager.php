@@ -109,4 +109,25 @@ class PlanquesManager
         }
         return $planques;
     }
+
+    public function getPlanquesListForAddMission(string $id_pays_mission)
+    {
+        $request = $this->pdo->prepare("SELECT * FROM dt_target 
+            WHERE id_country = :id_pays_mission");
+        $request->bindValue(':id_pays_mission', $id_pays_mission, PDO::PARAM_INT);
+        $request->execute();
+        $planques = array();
+        while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
+            $planques[] = new Cibles($datas);
+        }
+        return $planques;
+    }
+
+    public function asignPlanquesToMission(Planques $planque)
+    {
+        $request = $this->pdo->prepare("INSERT INTO dt_mission_stakeout(id_mission, id_stakeout) VALUES (:id_mission, :id_stakeout)");
+        $request->bindValue(':id_stakeout', $planque->getId(), PDO::PARAM_STR);
+        $request->bindValue(':id_mission', $planque->getMission_id_uuid(), PDO::PARAM_STR);
+        $request->execute();
+    }
 }

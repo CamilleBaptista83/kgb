@@ -16,37 +16,56 @@ $managerCibles = new CiblesManager();
 $cibles = $managerCibles->getCiblesListForAddMission($mission->getId_country());
 $managerContacts = new ContactsManager();
 $contacts = $managerContacts->getContactsListForAddMission($mission->getId_country());
+$managerPlanques = new PlanquesManager();
+$planques = $managerPlanques->getPlanquesListForAddMission($mission->getId_country());
 
 if ($_POST) {
-    if (!empty($_POST['agent_id_uuid']) && !empty($_POST['target_id_uuid']) && !empty($_POST['contact_id_uuid'])) {
-        foreach ($_POST['agent_id_uuid'] as $value) {
-            $data = array(
-                'mission_id_uuid' => $mission->getMission_id_uuid(),
-                'agent_id_uuid' => $value
-            );
-            $agents = new Agents($data);
-            $managerAgents->asignAgentToMission($agents);
-        }
-        foreach ($_POST['target_id_uuid'] as $value) {
-            $data = array(
-                'mission_id_uuid' => $mission->getMission_id_uuid(),
-                'target_id_uuid' => $value
-            );
-            $cibles = new Cibles($data);
-            $managerCibles->asignCiblesToMission($cibles);
-        }
-        foreach ($_POST['contact_id_uuid'] as $value) {
-            $data = array(
-                'mission_id_uuid' => $mission->getMission_id_uuid(),
-                'contact_id_uuid' => $value
-            );
-            $contacts = new Contacts($data);
-            $managerContacts->asignContactsToMission($contacts);
-        }
-        //echo '<script>window.location.href="../../admin.php"</script>';
+    if (isset($_POST['submit'])) {
+        if (!empty($_POST['agent_id_uuid']) && !empty($_POST['target_id_uuid']) && !empty($_POST['contact_id_uuid'])) {
+            foreach ($_POST['agent_id_uuid'] as $value) {
+                $data = array(
+                    'mission_id_uuid' => $mission->getMission_id_uuid(),
+                    'agent_id_uuid' => $value
+                );
+                $agents = new Agents($data);
+                $managerAgents->asignAgentToMission($agents);
+            }
+            foreach ($_POST['target_id_uuid'] as $value) {
+                $data = array(
+                    'mission_id_uuid' => $mission->getMission_id_uuid(),
+                    'target_id_uuid' => $value
+                );
+                $cibles = new Cibles($data);
+                $managerCibles->asignCiblesToMission($cibles);
+            }
+            foreach ($_POST['contact_id_uuid'] as $value) {
+                $data = array(
+                    'mission_id_uuid' => $mission->getMission_id_uuid(),
+                    'contact_id_uuid' => $value
+                );
+                $contacts = new Contacts($data);
+                $managerContacts->asignContactsToMission($contacts);
+            }
+            foreach ($_POST['id'] as $value) {
+                $data = array(
+                    'mission_id_uuid' => $mission->getMission_id_uuid(),
+                    'id' => $value
+                );
+                $planques = new Planques($data);
+                $managerPlanques->asignPlanquesToMission($planques);
+            }
+            echo '<script>window.location.href="../../admin.php"</script>';
 
+        }
+    }else{
+        $mission = $manager->delete($mission->getMission_id_uuid());
+        echo '<script>window.location.href="../../admin.php"</script>';
     }
+
 }
+
+
+
 ?>
 
 <div class="container">
@@ -125,9 +144,34 @@ if ($_POST) {
                 ?>
             </div>
 
-            <div>
-                <input type="submit" value="Ajouter l'Agent a la Mission" class="btn btn-danger">
+            <div class="form-group col-sm-6">
+                <h2>Planques :</h2>
+                <?php
+
+                foreach ($planques as $planque) {
+                ?>
+                    <div class="form-check">
+                        <input name='id[]' class="form-check-input" type="radio" value="<?= $planque->getId() ?>" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            <?= $planque->getCode() ?>
+                            <?= $planque->getAdress() ?>
+                            <?= $planque->getId_type() ?>
+                        </label>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
+
+            <div>
+                <input type="submit" name="submit" value="Ajouter l'Agent a la Mission" class="btn btn-danger">
+            </div>
+
+            <div>
+                <input type="submit" name="delete" value="Annuler la missions" class="btn btn-danger">
+            </div>
+
+
         </div>
     </form>
 </div>

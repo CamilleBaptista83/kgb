@@ -30,27 +30,6 @@ class MissionStatutsManager
         return $this;
     }
 
-    public function create(MissionStatuts $missionStatuts)
-    {
-        $request = $this->pdo->prepare("INSERT INTO dt_mission_statut(name) VALUES (:name)");
-        $request->bindValue(':name', $missionStatuts->getName(), PDO::PARAM_STR);
-        $request->execute();
-    }
-
-    public function update(MissionStatuts $missionStatuts)
-    {
-        $request = $this->pdo->prepare("UPDATE dt_mission_statut(name) SET name=:name WHERE id=:id");
-        $request->bindValue(':name', $missionStatuts->getName(), PDO::PARAM_STR);
-        $request->execute();
-    }
-
-    public function delete(string $id)
-    {
-        $request = $this->pdo->prepare("DELETE * FROM dt_mission_statut WHERE id=:id");
-        $request->bindValue(':id', $id, PDO::PARAM_STR);
-        $request->execute();
-    }
-
     public function getById(string $id)
     {
         $request = $this->pdo->prepare("SELECT * FROM dt_mission_statut WHERE id=:id");

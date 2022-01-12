@@ -23,114 +23,146 @@ if (isset($_SESSION['last_name'])) {
 
 ?>
 
-    <section>
-        <div class="container">
 
-            <h1 class="text-center m-4">Bienvenue Agent <?= $_SESSION['last_name'] ?></h1>
+    <div class="container">
 
+
+        <h1 class="text-center m-4">Bienvenue Agent <?= $_SESSION['last_name'] ?></h1>
+
+        <nav class="nav nav-pills flex-column flex-sm-row">
+            <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="show();">Tous</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="divVisibility('agents');">Agents</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="divVisibility('cibles');">Cibles</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="divVisibility('contacts');">Contacts</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="divVisibility('planques');">Planques</a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="divVisibility('missions');">Missions</a>
+        </nav>
+
+        <section id="all">
             <!-- AGENTS -->
 
-            <h2 class="text-center m-4">AGENTS</h2>
+            <article id="agents">
 
-            <div class="card-group">
+                <h2 class="text-center m-4">AGENTS</h2>
 
-                <?php
-                // affichage agents
-                foreach ($agents as $agent) {
-                    require "../kgb/vue/affichage_agents.php";
-                }
-                ?>
-                <div class="col-6 col-sm-4 col-md-3 p-2">
+                <div class="card-group">
 
-                    <div style="width: 18rem; height:25rem">
-                        <div class="card-body">
-                            <a href="./actions/agents/createAgent.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
+                    <?php
+                    // affichage agents
+                    foreach ($agents as $agent) {
+                        require "../kgb/vue/affichage_agents.php";
+                    }
+                    ?>
+                    <div class="col-6 col-sm-4 col-md-3 p-2">
+
+                        <div style="width: 18rem; height:25rem">
+                            <div class="card-body">
+                                <a href="./actions/agents/createAgent.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            </article>
+
 
             <!-- CIBLES -->
 
-            <h2 class="text-center m-4">CIBLES</h2>
+            <article id="cibles">
 
-            <div class="card-group">
+                <h2 class="text-center m-4">CIBLES</h2>
 
-                <?php
-                foreach ($cibles as $cible) {
-                    require "../kgb/vue/affichage_cibles.php";
-                }
-                ?>
-                <div class="col-6 col-sm-4 col-md-3 p-2">
-                    <div style="width: 18rem; height:25rem">
-                        <div class="card-body">
-                            <a href="./actions/cibles/createCibles.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
+                <div class="card-group">
+
+                    <?php
+                    foreach ($cibles as $cible) {
+                        require "../kgb/vue/affichage_cibles.php";
+                    }
+                    ?>
+                    <div class="col-6 col-sm-4 col-md-3 p-2">
+                        <div style="width: 18rem; height:25rem">
+                            <div class="card-body">
+                                <a href="./actions/cibles/createCibles.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            </article>
 
             <!-- CONTACTS -->
 
-            <h2 class="text-center m-4">CONTACTS</h2>
+            <article id="contacts">
 
-            <div class="card-group contacts">
-                <?php
-                foreach ($contacts as $contact) {
-                    require "../kgb/vue/affichage_contacts.php";
-                }
-                ?>
+                <h2 class="text-center m-4">CONTACTS</h2>
 
-                <div class="col-6 col-sm-4 col-md-3 p-2">
-                    <div style="width: 18rem;">
-                        <div class="card-body">
-                            <a href="./actions/contacts/createContact.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
+                <div class="card-group contacts">
+                    <?php
+                    foreach ($contacts as $contact) {
+                        require "../kgb/vue/affichage_contacts.php";
+                    }
+                    ?>
+
+                    <div class="col-6 col-sm-4 col-md-3 p-2">
+                        <div style="width: 18rem;">
+                            <div class="card-body">
+                                <a href="./actions/contacts/createContact.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
-            </div>
+            </article>
 
             <!-- PLANQUES -->
 
-            <h2 class="text-center m-4">PLANQUES</h2>
+            <article id="planques">
 
-            <div class="card-group planques">
-                <?php
-                foreach ($planques as $planque) {
-                    require "../kgb/vue/affichage_planques.php";
-                }
-                ?>
+                <h2 class="text-center m-4">PLANQUES</h2>
 
-                <div class="col-6 col-sm-4 col-md-3 p-2">
-                    <div style="width: 18rem; height:25rem">
-                        <div class="card-body">
-                            <a href="./actions/planques/createPlanques.php" class="btn btn-danger">Ajouter une planques</a>
+                <div class="card-group planques">
+                    <?php
+                    foreach ($planques as $planque) {
+                        require "../kgb/vue/affichage_planques.php";
+                    }
+                    ?>
+
+                    <div class="col-6 col-sm-4 col-md-3 p-2">
+                        <div style="width: 18rem; height:25rem">
+                            <div class="card-body">
+                                <a href="./actions/planques/createPlanques.php" class="btn btn-danger">Ajouter une planques</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            </article>
 
             <!-- MISSIONS -->
 
-            <h2 class="text-center m-4">MISSIONS</h2>
+            <article id="missions">
 
-            <?php
-            foreach ($missions as $mission) {
-                require "../kgb/vue/affichage_missions.php";
-            }
-            ?>
-            <div class="col-6 col-sm-4 col-md-3 p-2">
-                <div style="width: 18rem; height:25rem">
-                    <div class="card-body">
-                        <a href="./actions/missions/createMission.php" class="btn btn-danger">Ajouter une Mission</a>
+                <h2 class="text-center m-4">MISSIONS</h2>
+
+                <?php
+                foreach ($missions as $mission) {
+                    require "../kgb/vue/affichage_missions.php";
+                }
+                ?>
+                <div class="col-6 col-sm-4 col-md-3 p-2">
+                    <div style="width: 18rem; height:25rem">
+                        <div class="card-body">
+                            <a href="./actions/missions/createMission.php" class="btn btn-danger">Ajouter une Mission</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </article>
+        </section>
+    </div>
 
-    </section>
+
 
 
 <?php
