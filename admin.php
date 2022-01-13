@@ -23,6 +23,8 @@ if (isset($_SESSION['last_name'])) {
 
 ?>
 
+    <a href="/kgb/admin/logOut.php">Se déconnecter</a>
+
 
     <div class="container">
 

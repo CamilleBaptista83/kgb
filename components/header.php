@@ -38,7 +38,7 @@
                                 <a class="nav-link active" aria-current="page" href="/kgb/index.php">Acceuil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="admin/logPage.php">Admin</a>
+                                <a class="nav-link" href="/kgb/admin/logPage.php">Admin</a>
                             </li>
                         </ul>
                     </div>
