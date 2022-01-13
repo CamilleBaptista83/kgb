@@ -115,11 +115,8 @@ class AgentsManager
     // récupérer la liste des agents qui sont égligible sur une mission, pas le même id pays que la cible
     public function getAgentsListForAddMission(array $id_cible_country)
     {
-        $arr_as_string = implode( ',', $id_cible_country );
         $request = $this->pdo->prepare("SELECT * FROM dt_agents
-        WHERE `id_country` NOT IN (:arr_as_string)");
-        $request->bindValue(':arr_as_string', $arr_as_string, PDO::PARAM_INT);
-        var_dump($arr_as_string);
+        WHERE `id_country` NOT IN ( '" . implode( "', '" , $id_cible_country ) . "' )");
         $request->execute();
         $agents = array();
         while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
@@ -136,8 +133,8 @@ class AgentsManager
         dt_agents_specialities.id_agent, 
         dt_agents_specialities.id_speciality
         FROM dt_agents
-        LEFT JOIN dt_agents_specialities ON dt_agents.agent_id_uuid = dt_agents_specialities.id_agent 
-        WHERE dt_agents_specialities.id_speciality = :id_speciality AND id_country NOT IN (:arr_as_string)");
+        LEFT OUTER JOIN dt_agents_specialities ON dt_agents.agent_id_uuid = dt_agents_specialities.id_agent 
+        WHERE dt_agents_specialities.id_speciality = :id_speciality AND dt_agents.id_country NOT IN (:arr_as_string)");
         $request->bindValue(':arr_as_string', $arr_as_string, PDO::PARAM_INT);
         $request->bindValue(':id_speciality', $id_speciality, PDO::PARAM_INT);
         $request->execute();

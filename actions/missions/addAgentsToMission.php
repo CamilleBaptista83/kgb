@@ -9,7 +9,6 @@ $mission = $manager->getById($_GET['id_mission']);
 
 $managerCibles = new CiblesManager();
 $cibles = $managerCibles->getId_countries($_GET['id_mission']);
-var_dump($cibles);
 
 // agent principaux
 $managerAgents = new AgentsManager();
@@ -23,12 +22,13 @@ $planques = $managerPlanques->getPlanquesListForAddMission($mission->getId_count
 
 if ($_POST) {
     if (isset($_POST['submit'])) {
-        if (!empty($_POST['agent_id_uuid']) && !empty($_POST['contact_id_uuid'])) {
+        if (!empty($_POST['agent_id_uuid']) && !empty($_POST['contact_id_uuid']) && !empty($_POST['id'])) {
             foreach ($_POST['agent_id_uuid'] as $value) {
                 $data = array(
                     'mission_id_uuid' => $mission->getMission_id_uuid(),
                     'agent_id_uuid' => $value
                 );
+                var_dump($data);
                 $agents = new Agents($data);
                 $managerAgents->asignAgentToMission($agents);
             }
@@ -57,10 +57,21 @@ if ($_POST) {
     }
 
 }
-
-
-
 ?>
+
+<script>
+    $(document).ready(function() {
+        $('#checkBtn').click(function() {
+            checked = $("input[type=checkbox]:checked").length;
+
+            if (!checked) {
+                alert("You must check at least one checkbox.");
+                return false;
+            }
+
+        });
+    });
+</script>
 
 <div class="container">
     <h2 class="text-center m-5">Ajouter à la mission <?= $mission->getCode_name() ?></h2>
@@ -75,7 +86,7 @@ if ($_POST) {
                 foreach ($agentsPincipaux as $agentPincipal) {
                 ?>
                     <div class="form-check">
-                        <input name='agent_id_uuid[]' class="form-check-input" type="radio" value="<?= $agentPincipal->getAgent_id_uuid() ?>" id="flexCheckDefault">
+                        <input name='agent_id_uuid[]' class="form-check-input" type="radio" value="<?= $agentPincipal->getAgent_id_uuid() ?>" required id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             <?= $agentPincipal->getLast_name() ?>
                         </label>
@@ -141,7 +152,7 @@ if ($_POST) {
             </div>
 
             <div>
-                <input type="submit" name="submit" value="Ajouter l'Agent a la Mission" class="btn btn-danger">
+                <input id="checkBtn" type="submit" name="submit" value="Ajouter l'Agent a la Mission" class="btn btn-danger">
             </div>
 
             <div>
