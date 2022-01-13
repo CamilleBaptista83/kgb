@@ -5,15 +5,17 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
 
 
 $manager = new MissionsManager();
-$mission = $manager->getByCode($_GET['code_name']);
+$mission = $manager->getById($_GET['id_mission']);
+
+$managerCibles = new CiblesManager();
+$cibles = $managerCibles->getId_countries($_GET['id_mission']);
+var_dump($cibles);
 
 // agent principaux
 $managerAgents = new AgentsManager();
-$agentsPincipaux = $managerAgents->getAgentsListForAddMissionAndSpeciliality($mission->getId_country(), $mission->getId_speciality());
+$agentsPincipaux = $managerAgents->getAgentsListForAddMissionAndSpeciliality($cibles, $mission->getId_speciality());
 $managerAgents = new AgentsManager();
-$agents = $managerAgents->getAgentsListForAddMission($mission->getId_country(), $mission->getId_speciality());
-$managerCibles = new CiblesManager();
-$cibles = $managerCibles->getCiblesListForAddMission($mission->getId_country());
+$agents = $managerAgents->getAgentsListForAddMission($cibles);
 $managerContacts = new ContactsManager();
 $contacts = $managerContacts->getContactsListForAddMission($mission->getId_country());
 $managerPlanques = new PlanquesManager();
@@ -21,7 +23,7 @@ $planques = $managerPlanques->getPlanquesListForAddMission($mission->getId_count
 
 if ($_POST) {
     if (isset($_POST['submit'])) {
-        if (!empty($_POST['agent_id_uuid']) && !empty($_POST['target_id_uuid']) && !empty($_POST['contact_id_uuid'])) {
+        if (!empty($_POST['agent_id_uuid']) && !empty($_POST['contact_id_uuid'])) {
             foreach ($_POST['agent_id_uuid'] as $value) {
                 $data = array(
                     'mission_id_uuid' => $mission->getMission_id_uuid(),
@@ -29,14 +31,6 @@ if ($_POST) {
                 );
                 $agents = new Agents($data);
                 $managerAgents->asignAgentToMission($agents);
-            }
-            foreach ($_POST['target_id_uuid'] as $value) {
-                $data = array(
-                    'mission_id_uuid' => $mission->getMission_id_uuid(),
-                    'target_id_uuid' => $value
-                );
-                $cibles = new Cibles($data);
-                $managerCibles->asignCiblesToMission($cibles);
             }
             foreach ($_POST['contact_id_uuid'] as $value) {
                 $data = array(
@@ -72,10 +66,10 @@ if ($_POST) {
     <h2 class="text-center m-5">Ajouter à la mission <?= $mission->getCode_name() ?></h2>
     <form method="post">
         <div class="row">
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-6 p-1">
                 <h2>Agents :</h2>
 
-                <p>Agent Principal :</p>
+                <p>Agent Principal : (contenant la spécialité requise pour la mission)</p>
                 <?php
 
                 foreach ($agentsPincipaux as $agentPincipal) {
@@ -91,7 +85,7 @@ if ($_POST) {
                 ?>
             </div>
 
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-6 p-1">
 
                 <p>Agent Secondaire :</p>
                 <?php
@@ -109,25 +103,8 @@ if ($_POST) {
                 ?>
             </div>
 
-            <div class="form-group col-sm-6">
-                <h2>Cibles :</h2>
-                <?php
 
-                foreach ($cibles as $cible) {
-                ?>
-                    <div class="form-check">
-                        <input name='target_id_uuid[]' class="form-check-input" type="radio" value="<?= $cible->getTarget_id_uuid() ?>" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            <?= $cible->getLast_name() ?>
-                        </label>
-                    </div>
-                <?php
-                }
-                ?>
-            </div>
-
-
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-6 p-1">
                 <h2>Contacts :</h2>
                 <?php
 
@@ -144,7 +121,7 @@ if ($_POST) {
                 ?>
             </div>
 
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-6 p-1">
                 <h2>Planques :</h2>
                 <?php
 

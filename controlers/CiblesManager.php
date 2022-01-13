@@ -98,6 +98,22 @@ class CiblesManager
         return $cibles;
     }
 
+    public function getId_countries(string $id_mission)
+    {
+        $request = $this->pdo->prepare("SELECT * FROM dt_targets_missions 
+            LEFT JOIN dt_missions ON dt_targets_missions.id_mission = dt_missions.mission_id_uuid 
+            LEFT JOIN dt_target ON dt_targets_missions.id_target = dt_target.target_id_uuid 
+            LEFT JOIN dt_countries ON dt_target.id_country = dt_countries.id
+            WHERE mission_id_uuid= :mission_id_uuid");
+        $request->bindValue(':mission_id_uuid', $id_mission, PDO::PARAM_STR);
+        $request->execute();
+        $cibles = array();
+        while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
+            $cibles[] = $datas['id'];
+        }
+        return $cibles;
+    }
+
     // récupérer la liste des agents qui sont égligible sur une mission, pas le même id pays
     public function getCiblesListForAddMission(string $id_pays_mission)
     {

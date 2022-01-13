@@ -112,13 +112,13 @@ class PlanquesManager
 
     public function getPlanquesListForAddMission(string $id_pays_mission)
     {
-        $request = $this->pdo->prepare("SELECT * FROM dt_target 
+        $request = $this->pdo->prepare("SELECT * FROM dt_stakeout 
             WHERE id_country = :id_pays_mission");
         $request->bindValue(':id_pays_mission', $id_pays_mission, PDO::PARAM_INT);
         $request->execute();
         $planques = array();
         while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
-            $planques[] = new Cibles($datas);
+            $planques[] = new Planques($datas);
         }
         return $planques;
     }

@@ -15,6 +15,8 @@
     <!-- Import Style.css -->
     <link rel="stylesheet" type="text/css" href="/kgb/style.css">
 
+    <script src="/kgb/node_modules/jquery/dist/jquery.min.js"></script>
+    
     <title>KGB</title>
 
     <meta name="description" content="Liste des missions du KGB -- Russie">

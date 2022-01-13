@@ -25,7 +25,7 @@ if ($_POST) {
 
     ?>
     <script>
-    window.location.href="./addAgentsToMission.php?code_name=<?=$_POST['code_name']?>"
+    window.location.href="./addCiblesToMission.php?code_name=<?=$_POST['code_name']?>"
     </script>
     <?php
 

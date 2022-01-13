@@ -1,4 +1,4 @@
-<div class="col-6 col-sm-4 col-md-3 p-2">
+<div class="col-6 col-sm-4 col-md-3 p-2" id="delete<?= $contact->getCode_name() ?>">
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title"><?= $contact->getCode_name() ?></h5>

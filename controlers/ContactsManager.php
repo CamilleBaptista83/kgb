@@ -112,7 +112,7 @@ class ContactsManager
 
     public function asignContactsToMission(Contacts $contact)
     {
-        $request = $this->pdo->prepare("INSERT INTO dt_targets_missions(id_contact, id_mission) VALUES (:id_contact, :id_mission)");
+        $request = $this->pdo->prepare("INSERT INTO dt_targets_missions(id_target, id_mission) VALUES (:id_contact, :id_mission)");
         $request->bindValue(':id_contact', $contact->getContact_id_uuid(), PDO::PARAM_STR);
         $request->bindValue(':id_mission', $contact->getMission_id_uuid(), PDO::PARAM_STR);
         $request->execute();
