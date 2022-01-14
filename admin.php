@@ -27,7 +27,7 @@ if (isset($_SESSION['last_name'])) {
 ?>
 
     <div class="container">
-        <button class="btn logOut"><a href="/kgb/admin/logOut.php">Se déconnecter</a></button>
+        <button class="btn logOut"><a href="/admin/logOut.php">Se déconnecter</a></button>
 
         <h1 class="text-center m-4">Bienvenue Agent <?= $_SESSION['last_name'] ?></h1>
 
@@ -78,7 +78,7 @@ if (isset($_SESSION['last_name'])) {
 
                     <?php
                     foreach ($cibles as $cible) {
-                        require "../kgb/vue/affichage_cibles.php";
+                        require "../vue/affichage_cibles.php";
                     }
                     ?>
                     <div class="col-6 col-sm-4 col-md-3 p-2">
@@ -101,7 +101,7 @@ if (isset($_SESSION['last_name'])) {
                 <div class="card-group contacts">
                     <?php
                     foreach ($contacts as $contact) {
-                        require "../kgb/vue/affichage_contacts.php";
+                        require "../vue/affichage_contacts.php";
                     }
                     ?>
 
@@ -126,7 +126,7 @@ if (isset($_SESSION['last_name'])) {
                 <div class="card-group planques">
                     <?php
                     foreach ($planques as $planque) {
-                        require "../kgb/vue/affichage_planques.php";
+                        require "../vue/affichage_planques.php";
                     }
                     ?>
 
@@ -149,7 +149,7 @@ if (isset($_SESSION['last_name'])) {
 
                 <?php
                 foreach ($missions as $mission) {
-                    require "../kgb/vue/affichage_missions.php";
+                    require "../vue/affichage_missions.php";
                 }
                 ?>
                 <div class="col-6 col-sm-4 col-md-3 p-2">
@@ -173,7 +173,7 @@ if (isset($_SESSION['last_name'])) {
 
                 <?php
                 foreach ($typesMission as $typeMission) {
-                    require "../kgb/vue/affichage_typesMission.php";
+                    require "../vue/affichage_typesMission.php";
                 }
                 ?>
                 <div class="col-6 col-sm-4 col-md-3 p-2">

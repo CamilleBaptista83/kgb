@@ -38,7 +38,7 @@
                                 <a class="nav-link active" aria-current="page" href="./index.php">Acceuil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./admin/logPage.php">Admin</a>
+                                <a class="nav-link" href="./logPage.php">Admin</a>
                             </li>
                         </ul>
                     </div>
