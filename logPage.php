@@ -5,7 +5,7 @@ include  "header.php";
 include  "loadClasses.php";
 
 if (isset($_SESSION['login'])) {
-    echo '<script>window.location.href="/kgb/admin.php"</script>';
+    echo '<script>window.location.href="admin.php"</script>';
 } else {
     $login = false;
 
@@ -16,7 +16,7 @@ if (isset($_SESSION['login'])) {
         $manager->login($_POST['email'], $_POST['password']);
     }
 
-include  "vue/affichage_log.php";
+include  "affichage_log.php";
 
 }
 
