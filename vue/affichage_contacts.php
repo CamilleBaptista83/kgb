@@ -12,9 +12,8 @@
             <?php if (isset($_SESSION['last_name'])) {
             ?>
 
-                <a href="../actions/contacts/updateContact.php?id=<?= $contact->getContact_id_uuid() ?>"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/30/000000/external-edit-interface-kiranshastry-solid-kiranshastry-2.png" /></a>
-                <a href="../actions/contacts/deleteContact.php?id=<?= $contact->getContact_id_uuid() ?>"><img src="https://img.icons8.com/ios-glyphs/45/000000/filled-trash.png" /></a>
-
+                <a href="/kgb/actions/contacts/updateContact.php?id=<?= $contact->getContact_id_uuid() ?>"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/30/000000/external-edit-interface-kiranshastry-solid-kiranshastry-2.png" /></a>
+                <a onclick="deleteAjax('<?= $contact->getContact_id_uuid(); ?>', '<?= $contact->getCode_name() ?>', '/kgb/actions/contacts/deleteContact.php')"><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png" /></a>
                 <?php
                 if (isset($_GET['id'])) {
                 ?>

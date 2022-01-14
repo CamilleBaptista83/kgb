@@ -21,3 +21,7 @@ section {
   color: #5f0b0e;
   border: 2px solid #5f0b0e;
 }
+
+a{
+  cursor: pointer;
+}

@@ -1,5 +1,4 @@
-<?php
-?>
+
 <div class="col-6 col-sm-4 col-md-3 p-2" id="delete<?= $agent->getIdentification_code() ?>">
     <div class="card " style="width: 18rem; height:25rem">
         <div class="card-body">

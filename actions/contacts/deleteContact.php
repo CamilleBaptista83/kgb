@@ -7,7 +7,3 @@ $manager = new ContactsManager();
 $manager->delete($_GET['id']);
 
 ?>
-
-<script>
-    window.location.href="../../admin.php"
-</script>
