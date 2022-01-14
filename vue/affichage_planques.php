@@ -17,7 +17,7 @@
                 <?php
                 if (isset($_GET['id'])) {
                 ?>
-                    <a href="../actions/agents/deleteAgents.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Supprimer le contact de la mission</a>
+                <a onclick="deleteAjaxMission('<?= $planque->getId(); ?>', '<?= $planque->getCode() ?>', '<?= $mission->getMission_id_uuid() ?>', '/kgb/actions/planques/deletePlanquesFromMission.php')" class="btn btn-danger">Supprimer la planque de la mission</a>
             <?php
                 }
             }

@@ -118,4 +118,11 @@ class ContactsManager
         $request->execute();
     }
 
+    public function removeContactsFromMission(string $id, string $id_mission)
+    {
+        $request = $this->pdo->prepare("DELETE FROM `dt_contacts_missions` WHERE id_contact= :id AND id_mission= :id_mission");
+        $request->bindValue(':id', $id, PDO::PARAM_STR);
+        $request->bindValue(':id_mission', $id_mission, PDO::PARAM_STR);
+        $request->execute();
+    }
 }

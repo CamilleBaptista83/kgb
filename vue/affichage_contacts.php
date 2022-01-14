@@ -17,11 +17,12 @@
                 <?php
                 if (isset($_GET['id'])) {
                 ?>
-                    <a href="../actions/contacts/deleteContacts.php?id=<?= $contact->getContact_id_uuid() ?>" class="btn btn-danger">Supprimer le contact de la mission</a>
+                <a onclick="deleteAjaxMission('<?= $contact->getContact_id_uuid(); ?>', '<?= $contact->getCode_name() ?>', '<?= $mission->getMission_id_uuid() ?>', '/kgb/actions/contacts/deleteContactsFromMission.php')" class="btn btn-danger">Supprimer le contact de la mission</a>
             <?php
                 }
             }
             ?>
+            
 
         </div>
     </div>

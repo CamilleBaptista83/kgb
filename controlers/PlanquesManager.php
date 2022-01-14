@@ -130,4 +130,11 @@ class PlanquesManager
         $request->bindValue(':id_mission', $planque->getMission_id_uuid(), PDO::PARAM_STR);
         $request->execute();
     }
+    public function removePlanquesFromMission(string $id, string $id_mission)
+    {
+        $request = $this->pdo->prepare("DELETE FROM `dt_mission_stakeout` WHERE id_stakeout= :id AND id_mission= :id_mission");
+        $request->bindValue(':id', $id, PDO::PARAM_INT);
+        $request->bindValue(':id_mission', $id_mission, PDO::PARAM_STR);
+        $request->execute();
+    }
 }
