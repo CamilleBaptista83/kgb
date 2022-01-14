@@ -21,7 +21,7 @@ require  "loadClasses.php";
 
         <?php
         foreach ($missions as $mission) {
-            require "../kgb/vue/affichage_missions.php";
+            require "vue/affichage_missions.php";
         }
         ?>
     </div>
