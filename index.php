@@ -2,8 +2,8 @@
 
 session_start();
 
-require  "./components/header.php";
-require  "./components/loadClasses.php";
+require  "header.php";
+require  "loadClasses.php";
 ?>
 
 <main>
@@ -29,5 +29,5 @@ require  "./components/loadClasses.php";
 </main>
 
 <?php
-require  './kgb/components/footer.php';
+require  'footer.php';
 ?>
