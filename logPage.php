@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-include  "./components/header.php";
-include  $_SERVER['DOCUMENT_ROOT'] . "/components/loadClasses.php";
+include  "header.php";
+include  "loadClasses.php";
 
 if (isset($_SESSION['login'])) {
     echo '<script>window.location.href="/kgb/admin.php"</script>';
@@ -16,7 +16,7 @@ if (isset($_SESSION['login'])) {
         $manager->login($_POST['email'], $_POST['password']);
     }
 
-include  $_SERVER['DOCUMENT_ROOT'] . "/vue/affichage_log.php";
+include  "vue/affichage_log.php";
 
 }
 
