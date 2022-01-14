@@ -52,6 +52,7 @@ function deleteAjax(id, code, url) {
   }
 }
 
+
 function deleteAjaxMission(id, id_mission, url) {
   if (confirm('Vous êtes sûr ?')) {
     $.ajax({

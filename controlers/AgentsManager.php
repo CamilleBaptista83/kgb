@@ -153,10 +153,10 @@ class AgentsManager
         $request->execute();
     }
 
-    public function removeAgentFromMission(string $id_agent, string $id_mission)
+    public function removeAgentFromMission(string $id, string $id_mission)
     {
-        $request = $this->pdo->prepare("DELETE FROM `dt_agents_missions` WHERE id_agent= :id_agent AND id_mission= :id_mission");
-        $request->bindValue(':id_agent', $id_agent, PDO::PARAM_STR);
+        $request = $this->pdo->prepare("DELETE FROM `dt_agents_missions` WHERE id_agent= :id AND id_mission= :id_mission");
+        $request->bindValue(':id', $id, PDO::PARAM_STR);
         $request->bindValue(':id_mission', $id_mission, PDO::PARAM_STR);
         $request->execute();
     }

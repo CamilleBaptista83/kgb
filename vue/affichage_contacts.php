@@ -17,7 +17,7 @@
                 <?php
                 if (isset($_GET['id'])) {
                 ?>
-                    <a href="../actions/agents/deleteAgents.php?id=<?= $agent->getAgent_id_uuid() ?>" class="btn btn-danger">Supprimer le contact de la mission</a>
+                    <a href="../actions/contacts/deleteContacts.php?id=<?= $contact->getContact_id_uuid() ?>" class="btn btn-danger">Supprimer le contact de la mission</a>
             <?php
                 }
             }

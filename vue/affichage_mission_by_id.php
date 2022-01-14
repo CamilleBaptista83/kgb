@@ -21,6 +21,7 @@ $managerPlanques = new PlanquesManager();
 $planques = $managerPlanques->getByMission($_GET['id']);
 ?>
 
+
 <div class="container">
 
     <ul class="nav justify-content-end m-3">
@@ -83,7 +84,7 @@ $planques = $managerPlanques->getByMission($_GET['id']);
     <h2>CIBLES</h2>
     <div class="row">
         <?php
-        // affichage agents
+        // affichage CIBLES
         foreach ($cibles as $cible) {
             require "./affichage_cibles.php";
         }
@@ -91,23 +92,23 @@ $planques = $managerPlanques->getByMission($_GET['id']);
     </div>
     <hr>
 
-
     <h2>CONTACTS</h2>
     <div class="row">
         <?php
-        // affichage agents
+        // affichage CONTACTS
         foreach ($contacts as $contact) {
             require "./affichage_contacts.php";
         }
         ?>
     </div>
+
     <hr>
 
 
     <h2>PLANQUES</h2>
     <div class="row">
         <?php
-        // affichage agents
+        // affichage PLANQUES
         foreach ($planques as $planque) {
             require "./affichage_planques.php";
         }

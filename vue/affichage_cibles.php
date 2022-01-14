@@ -19,7 +19,7 @@
                 <?php
                 if (isset($_GET['id'])) {
                 ?>
-                    <a href="../actions/cibles/deleteCibles.php?id=<?= $cible->getAgent_id_uuid() ?>" class="btn btn-danger">Supprimer la cible de la mission</a>
+                    <a href="../actions/cibles/deleteCibles.php?id=<?= $cible->getTarget_id_uuid() ?>" class="btn btn-danger">Supprimer la cible de la mission</a>
             <?php
                 }
             }

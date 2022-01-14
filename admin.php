@@ -164,9 +164,6 @@ if (isset($_SESSION['last_name'])) {
         </section>
     </div>
 
-
-
-
 <?php
     require  $_SERVER['DOCUMENT_ROOT'] . '/kgb/components/footer.php';
 } else {
