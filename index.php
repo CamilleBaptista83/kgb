@@ -20,7 +20,7 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
 
         <?php
         foreach ($missions as $mission) {
-            require "../kgb/vue/affichage_missions.php";
+            require "/kgb/vue/affichage_missions.php";
         }
         ?>
     </div>
