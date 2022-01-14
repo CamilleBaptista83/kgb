@@ -16,7 +16,7 @@ if (isset($_SESSION['login'])) {
         $manager->login($_POST['email'], $_POST['password']);
     }
 
-include  "affichage_log.php";
+include  "vue/affichage_log.php";
 
 }
 
