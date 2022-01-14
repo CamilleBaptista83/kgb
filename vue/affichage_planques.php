@@ -1,5 +1,5 @@
 <div class="col-6 col-sm-4 col-md-3 p-2" id="delete<?= $planque->getCode() ?>">
-    <div class="card" style="width: 18rem;">
+    <div class="card">
         <div class="card-body">
             <h5 class="card-title"><?= $planque->getCode() ?></h5>
             <p class="card-text"><?= $planque->getAdress() ?> </p>
@@ -11,19 +11,14 @@
 
             <?php if (isset($_SESSION['last_name'])) {
             ?>
-
-                <a href="/kgb/actions/planques/updatePlanques.php?id=<?= $planque->getId() ?>"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/30/000000/external-edit-interface-kiranshastry-solid-kiranshastry-2.png" /></a>
-                <a onclick="deleteAjax('<?= $planque->getId(); ?>', '<?= $planque->getCode() ?>', '/kgb/actions/planques/deletePlanques.php')"><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png" /></a>
-                <?php
-                if (isset($_GET['id'])) {
-                ?>
-                <a onclick="deleteAjaxMission('<?= $planque->getId(); ?>', '<?= $planque->getCode() ?>', '<?= $mission->getMission_id_uuid() ?>', '/kgb/actions/planques/deletePlanquesFromMission.php')" class="btn btn-danger">Supprimer la planque de la mission</a>
+                <div class="actions">
+                    <a href="/kgb/actions/planques/updatePlanques.php?id=<?= $planque->getId() ?>"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/30/000000/external-edit-interface-kiranshastry-solid-kiranshastry-2.png" /></a>
+                    <a onclick="deleteAjax('<?= $planque->getId(); ?>', '<?= $planque->getCode() ?>', '/kgb/actions/planques/deletePlanques.php')"><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png" /></a>
+                </div>
             <?php
-                }
             }
             ?>
 
         </div>
     </div>
 </div>
-

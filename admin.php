@@ -23,15 +23,12 @@ if (isset($_SESSION['last_name'])) {
 
 ?>
 
-    <a href="/kgb/admin/logOut.php">Se déconnecter</a>
-
-
     <div class="container">
-
+        <button class="btn logOut"><a href="/kgb/admin/logOut.php">Se déconnecter</a></button>
 
         <h1 class="text-center m-4">Bienvenue Agent <?= $_SESSION['last_name'] ?></h1>
 
-        <nav class="nav nav-pills flex-column flex-sm-row">
+        <nav class="nav nav-pills flex-column flex-sm-row navigation_admin">
             <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="show();">Tous</a>
             <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="divVisibility('agents');">Agents</a>
             <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="divVisibility('cibles');">Cibles</a>

@@ -6,10 +6,6 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
 ?>
 
 <main>
-
-
-    <h1 class="text-center">Les Missions</h1>
-
     <?php
 
     // MISSIONS
@@ -19,13 +15,15 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
     // appel de la fonction get all pour récupérer les données
     $missions = $managerMission->getAll();
     ?>
+    <div class="container">
+        <h1 class="text-center">Les Missions</h1>
 
-    <?php
-    foreach ($missions as $mission) {
-        require "../kgb/vue/affichage_missions.php";
-    }
-    ?>
-
+        <?php
+        foreach ($missions as $mission) {
+            require "../kgb/vue/affichage_missions.php";
+        }
+        ?>
+    </div>
 
 </main>
 

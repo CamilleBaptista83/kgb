@@ -1,5 +1,5 @@
 <div class="col-6 col-sm-4 col-md-3 p-2" id="delete<?= $cible->getCode_name() ?>">
-    <div class="card" style="width: 18rem; height:25rem">
+    <div class="card">
         <div class="card-body">
             <h5 class="card-title"><?= $cible->getCode_name() ?></h5>
             <p class="card-text"> <span><?= $cible->getLast_name() ?> </span><?= $cible->getFirst_name() ?></p>
@@ -11,21 +11,14 @@
 
             <?php if (isset($_SESSION['last_name'])) {
             ?>
-
-                <a href="../actions/cibles/updateCibles.php?id=<?= $cible->getTarget_id_uuid() ?>"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/30/000000/external-edit-interface-kiranshastry-solid-kiranshastry-2.png" /></a>
-                <a onclick="deleteAjax('<?= $cible->getTarget_id_uuid(); ?>', '<?= $cible->getCode_name() ?>', '/kgb/actions/cibles/deleteCibles.php')"><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png" /></a>
-
-
-                <?php
-                if (isset($_GET['id'])) {
-                ?>
-                <a onclick="deleteAjaxMission('<?= $cible->getTarget_id_uuid(); ?>', '<?= $cible->getCode_name() ?>', '<?= $mission->getMission_id_uuid() ?>', '/kgb/actions/cibles/deleteCiblesFromMission.php')" class="btn btn-danger">Supprimer la Cible de la mission</a>
+                <div class="actions">
+                    <a href="../actions/cibles/updateCibles.php?id=<?= $cible->getTarget_id_uuid() ?>"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/30/000000/external-edit-interface-kiranshastry-solid-kiranshastry-2.png" /></a>
+                    <a onclick="deleteAjax('<?= $cible->getTarget_id_uuid(); ?>', '<?= $cible->getCode_name() ?>', '/kgb/actions/cibles/deleteCibles.php')"><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png" /></a>
+                </div>
             <?php
-                }
             }
             ?>
 
         </div>
     </div>
 </div>
-

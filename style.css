@@ -1,10 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,400;0,600;1,700&display=swap");
 body {
   font-family: "Roboto Mono", monospace;
+  background-color: #915f61;
 }
 
 .logo {
   width: 8rem;
+}
+
+.text-center{
+  padding: 1rem;
+  margin: 2rem;
 }
 
 section {
@@ -24,4 +30,61 @@ section {
 
 a{
   cursor: pointer;
+}
+
+.card{
+  margin: 1rem;
+  background-image: url(https://images.unsplash.com/photo-1615800098746-73af8261e3df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1976&q=80);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.card-body{
+  position: relative;
+  padding: 2.5rem;
+}
+
+.list-group-item{
+  background-color: transparent;
+}
+
+.actions{
+  display: flex;
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  background-color: white;
+  border-radius: 5px;
+  padding: .2rem;
+  background-color: #7415198c;
+}
+
+.actions a {
+  margin : 0 .5rem;
+}
+
+
+
+/* ADMIN NAV*/
+
+.navigation_admin{  
+  background-color: black;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.logOut{
+  margin: 1rem;
+}
+
+.navigation_admin a, .logOut a{
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.navigation_admin a:hover{
+  color: #e65058;
+  font-size: 1.5rem;
 }
