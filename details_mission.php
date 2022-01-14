@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/header.php";
-require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
+require  "header.php";
+require  "loadClasses.php";
 
 
 $manager = new MissionsManager();
@@ -26,10 +26,10 @@ $planques = $managerPlanques->getByMission($_GET['id']);
 
     <ul class="nav justify-content-end m-3">
         <li class="nav-item m-1 p-2">
-        <a href="../actions/missions/updateMission.php?id=<?= $mission->getMission_id_uuid() ?>" ><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/45/000000/external-edit-interface-kiranshastry-solid-kiranshastry-2.png"/></a>
+        <a href="actions/missions/updateMission.php?id=<?= $mission->getMission_id_uuid() ?>" ><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/45/000000/external-edit-interface-kiranshastry-solid-kiranshastry-2.png"/></a>
         </li>
         <li class="nav-item m-1 p-2">
-        <a href="../actions/missions/deleteMission.php?id=<?= $mission->getMission_id_uuid() ?>" ><img src="https://img.icons8.com/ios-glyphs/45/000000/filled-trash.png"/></a>
+        <a href="actions/missions/deleteMission.php?id=<?= $mission->getMission_id_uuid() ?>" ><img src="https://img.icons8.com/ios-glyphs/45/000000/filled-trash.png"/></a>
         </li>
     </ul>
 
@@ -74,7 +74,7 @@ $planques = $managerPlanques->getByMission($_GET['id']);
         <?php
         // affichage agents
         foreach ($agents as $agent) {
-            require "./affichage_agents.php";
+            require "vue/affichage_agents.php";
         }
         ?>
     </div>
@@ -86,7 +86,7 @@ $planques = $managerPlanques->getByMission($_GET['id']);
         <?php
         // affichage CIBLES
         foreach ($cibles as $cible) {
-            require "./affichage_cibles.php";
+            require "vue/affichage_cibles.php";
         }
         ?>
     </div>
@@ -97,7 +97,7 @@ $planques = $managerPlanques->getByMission($_GET['id']);
         <?php
         // affichage CONTACTS
         foreach ($contacts as $contact) {
-            require "./affichage_contacts.php";
+            require "vue/affichage_contacts.php";
         }
         ?>
     </div>
@@ -110,7 +110,7 @@ $planques = $managerPlanques->getByMission($_GET['id']);
         <?php
         // affichage PLANQUES
         foreach ($planques as $planque) {
-            require "./affichage_planques.php";
+            require "vue/affichage_planques.php";
         }
         ?>
     </div>
@@ -119,6 +119,6 @@ $planques = $managerPlanques->getByMission($_GET['id']);
 
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT'] . '/kgb/components/footer.php';
+require  'footer.php';
 
 ?>

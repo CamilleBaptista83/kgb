@@ -52,14 +52,14 @@ if (isset($_SESSION['last_name'])) {
                     <?php
                     // affichage agents
                     foreach ($agents as $agent) {
-                        require "../kgb/vue/affichage_agents.php";
+                        require "vue/affichage_agents.php";
                     }
                     ?>
                     <div class="col-6 col-sm-4 col-md-3 p-2">
 
                         <div style="width: 18rem; height:25rem">
                             <div class="card-body">
-                                <a href="./actions/agents/createAgent.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
+                                <a href="actions/agents/createAgent.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
                             </div>
                         </div>
                     </div>
@@ -78,13 +78,13 @@ if (isset($_SESSION['last_name'])) {
 
                     <?php
                     foreach ($cibles as $cible) {
-                        require "../vue/affichage_cibles.php";
+                        require "vue/affichage_cibles.php";
                     }
                     ?>
                     <div class="col-6 col-sm-4 col-md-3 p-2">
                         <div style="width: 18rem; height:25rem">
                             <div class="card-body">
-                                <a href="./actions/cibles/createCibles.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
+                                <a href="actions/cibles/createCibles.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
                             </div>
                         </div>
                     </div>
@@ -101,14 +101,14 @@ if (isset($_SESSION['last_name'])) {
                 <div class="card-group contacts">
                     <?php
                     foreach ($contacts as $contact) {
-                        require "../vue/affichage_contacts.php";
+                        require "vue/affichage_contacts.php";
                     }
                     ?>
 
                     <div class="col-6 col-sm-4 col-md-3 p-2">
                         <div style="width: 18rem;">
                             <div class="card-body">
-                                <a href="./actions/contacts/createContact.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
+                                <a href="actions/contacts/createContact.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
                             </div>
                         </div>
                     </div>
@@ -126,14 +126,14 @@ if (isset($_SESSION['last_name'])) {
                 <div class="card-group planques">
                     <?php
                     foreach ($planques as $planque) {
-                        require "../vue/affichage_planques.php";
+                        require "vue/affichage_planques.php";
                     }
                     ?>
 
                     <div class="col-6 col-sm-4 col-md-3 p-2">
                         <div style="width: 18rem; height:25rem">
                             <div class="card-body">
-                                <a href="./actions/planques/createPlanques.php" class="btn btn-danger">Ajouter une planques</a>
+                                <a href="actions/planques/createPlanques.php" class="btn btn-danger">Ajouter une planques</a>
                             </div>
                         </div>
                     </div>
@@ -149,7 +149,7 @@ if (isset($_SESSION['last_name'])) {
 
                 <?php
                 foreach ($missions as $mission) {
-                    require "../vue/affichage_missions.php";
+                    require "vue/affichage_missions.php";
                 }
                 ?>
                 <div class="col-6 col-sm-4 col-md-3 p-2">
