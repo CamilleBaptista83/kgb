@@ -7,8 +7,25 @@ class MissionStatutsManager
 
     public function __construct()
     {
-        $this->setPdo(new PDO('mysql:host=localhost;dbname=kgb;charset=utf8', 'kgb_admin', 'vladimirovitch'));
-    }
+        if (getenv('JAWSDB_URL') !== false) {
+            $dbparts = parse_url(getenv('JAWSDB_URL'));
+
+            $hostname = $dbparts['host'];
+            $username = $dbparts['user'];
+            $password = $dbparts['pass'];
+            $database = ltrim($dbparts['path'], '/');
+        } else {
+            $hostname = 'localhost';
+            $username = 'kgb_admin';
+            $password = 'vladimirovitch';
+            $database = 'kgb';
+        }
+
+        try {
+            $this->setPdo(new PDO('mysql:host=' . $hostname . ';dbname=' . $database . ';charset=utf8', $username, $password));
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }    }
 
     /**
      * Get the value of pdo

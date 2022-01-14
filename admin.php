@@ -21,6 +21,9 @@ if (isset($_SESSION['last_name'])) {
     $managerMission = new MissionsManager();
     $missions = $managerMission->getAll();
 
+    $managerTypesMission = new MissionTypesManager();
+    $typesMission = $managerTypesMission->getAll();
+
 ?>
 
     <div class="container">
@@ -153,6 +156,30 @@ if (isset($_SESSION['last_name'])) {
                     <div style="width: 18rem; height:25rem">
                         <div class="card-body">
                             <a href="./actions/missions/createMission.php" class="btn btn-danger">Ajouter une Mission</a>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+
+
+
+
+            <!-- TYPE MISSIONS -->
+
+            <article id="missions">
+
+                <h2 class="text-center m-4">TYPE MISSION</h2>
+
+                <?php
+                foreach ($typesMission as $typeMission) {
+                    require "../kgb/vue/affichage_typesMission.php";
+                }
+                ?>
+                <div class="col-6 col-sm-4 col-md-3 p-2">
+                    <div style="width: 18rem; height:25rem">
+                        <div class="card-body">
+                            <a href="./actions/type_mission/createMission.php" class="btn btn-danger">Ajouter une Mission</a>
                         </div>
                     </div>
                 </div>
