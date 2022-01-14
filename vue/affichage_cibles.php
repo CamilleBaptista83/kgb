@@ -19,7 +19,7 @@
                 <?php
                 if (isset($_GET['id'])) {
                 ?>
-                    <a href="../actions/cibles/deleteCibles.php?id=<?= $cible->getTarget_id_uuid() ?>" class="btn btn-danger">Supprimer la cible de la mission</a>
+                <a onclick="deleteAjaxMission('<?= $cible->getTarget_id_uuid(); ?>', '<?= $cible->getCode_name() ?>', '<?= $mission->getMission_id_uuid() ?>', '/kgb/actions/cibles/deleteCiblesFromMission.php')" class="btn btn-danger">Supprimer la Cible de la mission</a>
             <?php
                 }
             }

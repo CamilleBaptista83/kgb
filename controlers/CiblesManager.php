@@ -135,4 +135,12 @@ class CiblesManager
         $request->bindValue(':id_mission', $cible->getMission_id_uuid(), PDO::PARAM_STR);
         $request->execute();
     }
+
+    public function removeCibleFromMission(string $id, string $id_mission)
+    {
+        $request = $this->pdo->prepare("DELETE FROM `dt_targets_missions` WHERE id_target= :id AND id_mission= :id_mission");
+        $request->bindValue(':id', $id, PDO::PARAM_STR);
+        $request->bindValue(':id_mission', $id_mission, PDO::PARAM_STR);
+        $request->execute();
+    }
 }

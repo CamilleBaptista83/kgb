@@ -37,7 +37,7 @@
             <?php
                     if (isset($_GET['id'])) {
             ?>
-                <a onclick="deleteAjaxMission('<?= $agent->getAgent_id_uuid(); ?>', '<?= $mission->getMission_id_uuid() ?>', '/kgb/actions/agents/deleteAgentsFromMission.php')" class="btn btn-danger">Supprimer l'agent de la mission</a>
+                <a onclick="deleteAjaxMission('<?= $agent->getAgent_id_uuid(); ?>', '<?= $agent->getIdentification_code() ?>', '<?= $mission->getMission_id_uuid() ?>', '/kgb/actions/agents/deleteAgentsFromMission.php')" class="btn btn-danger">Supprimer l'agent de la mission</a>
         <?php
                     }
                 }
