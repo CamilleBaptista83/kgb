@@ -139,24 +139,4 @@ class MissionsManager
         return $missions;
     }
 
-    public function search($search)
-    {
-        $request = $this->pdo->query("SELECT dt_missions.mission_id_uuid, dt_missions.title ,dt_missions.description , dt_missions.code_name,dt_missions.start, dt_missions.end, 
-        dt_missions.id_type, dt_missions.id_country, dt_missions.id_statut, dt_missions.id_speciality,
-        dt_mission_type.name AS mission_type_name,
-        dt_countries.name AS country_name,
-        dt_mission_statut.name AS mission_statut_name,
-        dt_specialities.name AS speciality_name 
-        FROM dt_missions 
-        LEFT JOIN dt_mission_type ON dt_missions.id_type = dt_mission_type.id
-        LEFT JOIN dt_countries ON dt_missions.id_country = dt_countries.id
-        LEFT JOIN dt_mission_statut ON dt_missions.id_statut = dt_mission_statut.id
-        LEFT JOIN dt_specialities ON dt_missions.id_speciality = dt_specialities.id
-        LIKE '$search%'");
-        $missions = array();
-        while ($datas = $request->fetch(PDO::FETCH_ASSOC)) {
-            $missions[] = new Missions($datas);
-        }
-        return $missions;
-    }
 }

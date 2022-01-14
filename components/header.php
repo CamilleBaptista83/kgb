@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/kgb/style.css">
 
     <script src="/kgb/node_modules/jquery/dist/jquery.min.js"></script>
-    
+
     <title>KGB</title>
 
     <meta name="description" content="Liste des missions du KGB -- Russie">
@@ -26,14 +26,14 @@
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="navbar-brand" href="#"><img class="logo" src="/kgb/img/logo_KGB.png" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <div class="container">
-                        <ul class="nav justify-content-center">
+                        <ul class="nav justify-content-end">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="/kgb/index.php">Acceuil</a>
                             </li>
@@ -42,10 +42,6 @@
                             </li>
                         </ul>
                     </div>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn" type="submit">Rechercher</button>
-                    </form>
                 </div>
             </div>
         </nav>
