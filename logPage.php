@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require  "./components/header.php";
-require  $_SERVER['DOCUMENT_ROOT'] . "/components/loadClasses.php";
+include  "./components/header.php";
+include  $_SERVER['DOCUMENT_ROOT'] . "/components/loadClasses.php";
 
 if (isset($_SESSION['login'])) {
     echo '<script>window.location.href="/kgb/admin.php"</script>';
@@ -16,11 +16,11 @@ if (isset($_SESSION['login'])) {
         $manager->login($_POST['email'], $_POST['password']);
     }
 
-require  $_SERVER['DOCUMENT_ROOT'] . "/vue/affichage_log.php";
+include  $_SERVER['DOCUMENT_ROOT'] . "/vue/affichage_log.php";
 
 }
 
 
 
-require  $_SERVER['DOCUMENT_ROOT'] . '/components/footer.php';
+include  'footer.php';
 ?>
