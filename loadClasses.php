@@ -4,9 +4,9 @@
 function loadClasses($class)
 {
     if (strpos($class, 'Manager')) {
-        require  "/controlers/$class.php";
+        require  "./controlers/$class.php";
     } else {
-        require  "/models/$class.php";
+        require  "./models/$class.php";
     }
 }
 
