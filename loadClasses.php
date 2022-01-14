@@ -4,9 +4,9 @@
 function loadClasses($class)
 {
     if (strpos($class, 'Manager')) {
-        require  $_SERVER['DOCUMENT_ROOT']."/kgb/controlers/$class.php";
+        require  "/controlers/$class.php";
     } else {
-        require  $_SERVER['DOCUMENT_ROOT']."/kgb/models/$class.php";
+        require  "/models/$class.php";
     }
 }
 
