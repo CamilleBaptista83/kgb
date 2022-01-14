@@ -1,28 +1,9 @@
 <?php
 
-if (getenv('JAWSDB_URL') !== false) {
-    $dbparts = parse_url(getenv('JAWSDB_URL'));
-
-    $hostname = $dbparts['host'];
-    $username = $dbparts['user'];
-    $password = $dbparts['pass'];
-    $database = ltrim($dbparts['path'], '/');
-} else {
-    $hostname = 'localhost';
-    $username = 'kgb_admin';
-    $password = 'vladimirovitch';
-    $database = 'kgb';
-}
-
-try {
-    $this->setPdo(new PDO('mysql:host=' . $hostname . ';dbname=' . $database . ';charset=utf8', $username, $password));
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
 session_start();
 
-require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/header.php";
-require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
+require  "./components/header.php";
+require  "./components/loadClasses.php";
 ?>
 
 <main>
@@ -48,5 +29,5 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
 </main>
 
 <?php
-require  $_SERVER['DOCUMENT_ROOT'] . '/kgb/components/footer.php';
+require  './components/footer.php';
 ?>
