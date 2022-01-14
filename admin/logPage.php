@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require  "./components/header.php";
-require  "./components/loadClasses.php";
+require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/header.php";
+require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
 
 if (isset($_SESSION['login'])) {
     echo '<script>window.location.href="/kgb/admin.php"</script>';
@@ -22,5 +22,5 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/vue/affichage_log.php";
 
 
 
-require  './components/footer.php';
+require  $_SERVER['DOCUMENT_ROOT'] . '/kgb/components/footer.php';
 ?>

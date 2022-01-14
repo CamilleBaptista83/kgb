@@ -1,11 +1,10 @@
 <?php
 
-require  "./header.php";
-require  "./loadClasses.php";
+require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/header.php";
+require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/loadClasses.php";
 
 
-
-$manager = new CiblesManager();
+$manager = new AgentsManager();
 
 // affichage des nom de pays dans l'input select
 $managerContries = new CountriesManager();
@@ -13,23 +12,23 @@ $contries = $managerContries->getCountryName();
 
 
 if ($_POST) {
-    $cible = new Cibles($_POST);
-    $manager->create($cible);
+    $agent = new Agents($_POST);
+    $manager->create($agent);
     ?>
     <script>
-    window.location.href="../../admin.php"
+    window.location.href="./createAgentSpecialities.php?identification_code=<?=$_POST['identification_code'] ?>"
     </script>
     <?php
 }
 ?>
 
 <div class="container">
-    <h2 class="text-center">Créer une Cible</h2>
+    <h2 class="text-center">Créer un Agent</h2>
     <form method="post">
         <div class="row">
             <div class="form-group col-sm-6">
-                <label for="form-label">Nom de Code : </label>
-                <input type="text" class="form-control" id="code_name" name="code_name" placeholder="" required>
+                <label for="form-label">Code d'didentification : </label>
+                <input type="text" class="form-control" id="identification_code" name="identification_code" placeholder="" required>
             </div>
 
             <div class="form-group col-sm-6">
@@ -62,14 +61,13 @@ if ($_POST) {
                 </select>
 
             <div>
-                <input type="submit" value="Ajouter la Cible" class="btn btn-danger">
+                <input type="submit" value="Ajouter l'agent" class="btn btn-danger">
             </div>
     </form>
 </div>
 
 <?php
 
-require  "./footer.php";
-
+require  $_SERVER['DOCUMENT_ROOT'].'/kgb/components/footer.php';
 
 ?>

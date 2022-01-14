@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require  "./components/header.php";
-require  "./components/loadClasses.php";
+require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/header.php";
+require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
 
 
 $manager = new MissionsManager();
@@ -119,6 +119,6 @@ $planques = $managerPlanques->getByMission($_GET['id']);
 
 <?php
 
-require  './components/footer.php';
+require  $_SERVER['DOCUMENT_ROOT'] . '/kgb/components/footer.php';
 
 ?>
