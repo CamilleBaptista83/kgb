@@ -1,7 +1,8 @@
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/header.php";
-require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/loadClasses.php";
+require  "./header.php";
+require  "./loadClasses.php";
+
 
 
 $manager = new AgentsManager();
@@ -68,6 +69,7 @@ if ($_POST) {
 
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT'].'/kgb/components/footer.php';
+require  "./footer.php";
+
 
 ?>

@@ -1,7 +1,7 @@
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/header.php";
-require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
+require  "./components/header.php";
+require  "./components/loadClasses.php";
 
 
 $manager = new MissionsManager();
@@ -132,6 +132,6 @@ if ($_POST) {
 
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT'] . '/kgb/components/footer.php';
+require  './components/footer.php';
 
 ?>

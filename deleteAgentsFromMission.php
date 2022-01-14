@@ -1,6 +1,7 @@
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/loadClasses.php";
+require  "./loadClasses.php";
+
 
 
 $manager = new AgentsManager();

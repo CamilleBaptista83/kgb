@@ -1,7 +1,7 @@
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/header.php";
-require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
+require  "./components/header.php";
+require  "./components/loadClasses.php";
 
 
 
@@ -31,7 +31,7 @@ if ($_POST) {
         }
     } else {
         $mission = $manager->delete($mission->getMission_id_uuid());
-        echo '<script>window.location.href="../../admin.php"</script>';
+        echo '<script>window.location.href="./admin.php"</script>';
     }
 }
 
@@ -90,6 +90,6 @@ if ($_POST) {
 
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT'] . '/kgb/components/footer.php';
+require  './components/footer.php';
 
 ?>

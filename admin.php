@@ -1,196 +1,154 @@
 <?php
-session_start();
 
-if (isset($_SESSION['last_name'])) {
+class Admin
+{
 
-    require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/header.php";
-    require  $_SERVER['DOCUMENT_ROOT'] . "/kgb/components/loadClasses.php";
+    private $admin_id_uuid;
+    private $first_name;
+    private $last_name;
+    private $email;
+    private $password;
+    private $creation_date;
 
-    $manager = new AgentsManager();
-    $agents = $manager->getAll();
+    public function __construct(array $data = array())
+    {
+        if (!empty($data)) {
+            $this->hydrate($data);
+        }
+    }
+    public function hydrate(array $data)
+    {
+        foreach ($data as $key => $value) {
+            // One gets the setter's name matching the attribute.
+            $method = 'set' . ucfirst($key);
 
-    $manager = new CiblesManager();
-    $cibles = $manager->getAll();
-
-    $manager = new ContactsManager();
-    $contacts = $manager->getAll();
-
-    $managerPlanques = new PlanquesManager();
-    $planques = $managerPlanques->getAll();
-
-    $managerMission = new MissionsManager();
-    $missions = $managerMission->getAll();
-
-    $managerTypesMission = new MissionTypesManager();
-    $typesMission = $managerTypesMission->getAll();
-
-?>
-
-    <div class="container">
-        <button class="btn logOut"><a href="/kgb/admin/logOut.php">Se déconnecter</a></button>
-
-        <h1 class="text-center m-4">Bienvenue Agent <?= $_SESSION['last_name'] ?></h1>
-
-        <nav class="nav nav-pills flex-column flex-sm-row navigation_admin">
-            <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="show();">Tous</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="divVisibility('agents');">Agents</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="divVisibility('cibles');">Cibles</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="divVisibility('contacts');">Contacts</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="divVisibility('planques');">Planques</a>
-            <a class="flex-sm-fill text-sm-center nav-link" href="#" onclick="divVisibility('missions');">Missions</a>
-        </nav>
-
-        <section id="all">
-            <!-- AGENTS -->
-
-            <article id="agents">
-
-                <h2 class="text-center m-4">AGENTS</h2>
-
-                <div class="card-group">
-
-                    <?php
-                    // affichage agents
-                    foreach ($agents as $agent) {
-                        require "../kgb/vue/affichage_agents.php";
-                    }
-                    ?>
-                    <div class="col-6 col-sm-4 col-md-3 p-2">
-
-                        <div style="width: 18rem; height:25rem">
-                            <div class="card-body">
-                                <a href="./actions/agents/createAgent.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </article>
-
-
-            <!-- CIBLES -->
-
-            <article id="cibles">
-
-                <h2 class="text-center m-4">CIBLES</h2>
-
-                <div class="card-group">
-
-                    <?php
-                    foreach ($cibles as $cible) {
-                        require "../kgb/vue/affichage_cibles.php";
-                    }
-                    ?>
-                    <div class="col-6 col-sm-4 col-md-3 p-2">
-                        <div style="width: 18rem; height:25rem">
-                            <div class="card-body">
-                                <a href="./actions/cibles/createCibles.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </article>
-
-            <!-- CONTACTS -->
-
-            <article id="contacts">
-
-                <h2 class="text-center m-4">CONTACTS</h2>
-
-                <div class="card-group contacts">
-                    <?php
-                    foreach ($contacts as $contact) {
-                        require "../kgb/vue/affichage_contacts.php";
-                    }
-                    ?>
-
-                    <div class="col-6 col-sm-4 col-md-3 p-2">
-                        <div style="width: 18rem;">
-                            <div class="card-body">
-                                <a href="./actions/contacts/createContact.php"><img src="https://img.icons8.com/ios/50/5f0b0e/add-administrator.png" /></a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- PLANQUES -->
-
-            <article id="planques">
-
-                <h2 class="text-center m-4">PLANQUES</h2>
-
-                <div class="card-group planques">
-                    <?php
-                    foreach ($planques as $planque) {
-                        require "../kgb/vue/affichage_planques.php";
-                    }
-                    ?>
-
-                    <div class="col-6 col-sm-4 col-md-3 p-2">
-                        <div style="width: 18rem; height:25rem">
-                            <div class="card-body">
-                                <a href="./actions/planques/createPlanques.php" class="btn btn-danger">Ajouter une planques</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </article>
-
-            <!-- MISSIONS -->
-
-            <article id="missions">
-
-                <h2 class="text-center m-4">MISSIONS</h2>
-
-                <?php
-                foreach ($missions as $mission) {
-                    require "../kgb/vue/affichage_missions.php";
-                }
-                ?>
-                <div class="col-6 col-sm-4 col-md-3 p-2">
-                    <div style="width: 18rem; height:25rem">
-                        <div class="card-body">
-                            <a href="./actions/missions/createMission.php" class="btn btn-danger">Ajouter une Mission</a>
-                        </div>
-                    </div>
-                </div>
-
-            </article>
+            // If the matching setter exists
+            if (method_exists($this, $method)) {
+                // One calls the setter.
+                $this->$method($value);
+            }
+        }
+    }
 
 
 
+    /**
+     * Get the value of admin_id_uuid
+     */ 
+    public function getAdmin_id_uuid()
+    {
+        return $this->admin_id_uuid;
+    }
 
-            <!-- TYPE MISSIONS -->
+    /**
+     * Set the value of admin_id_uuid
+     *
+     * @return  self
+     */ 
+    public function setAdmin_id_uuid($admin_id_uuid)
+    {
+        $this->admin_id_uuid = $admin_id_uuid;
 
-            <article id="missions">
+        return $this;
+    }
 
-                <h2 class="text-center m-4">TYPE MISSION</h2>
+    /**
+     * Get the value of first_name
+     */ 
+    public function getFirst_name()
+    {
+        return $this->first_name;
+    }
 
-                <?php
-                foreach ($typesMission as $typeMission) {
-                    require "../kgb/vue/affichage_typesMission.php";
-                }
-                ?>
-                <div class="col-6 col-sm-4 col-md-3 p-2">
-                    <div style="width: 18rem; height:25rem">
-                        <div class="card-body">
-                            <a href="./actions/type_mission/createMission.php" class="btn btn-danger">Ajouter une Mission</a>
-                        </div>
-                    </div>
-                </div>
+    /**
+     * Set the value of first_name
+     *
+     * @return  self
+     */ 
+    public function setFirst_name($first_name)
+    {
+        $this->first_name = $first_name;
 
-            </article>
-        </section>
-    </div>
+        return $this;
+    }
 
-<?php
-    require  $_SERVER['DOCUMENT_ROOT'] . '/kgb/components/footer.php';
-} else {
-    echo 'Vous ne devez pas être là';
+    /**
+     * Get the value of last_name
+     */ 
+    public function getLast_name()
+    {
+        return $this->last_name;
+    }
+
+    /**
+     * Set the value of last_name
+     *
+     * @return  self
+     */ 
+    public function setLast_name($last_name)
+    {
+        $this->last_name = $last_name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of email
+     */ 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of password
+     */ 
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set the value of password
+     *
+     * @return  self
+     */ 
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of creation_date
+     */ 
+    public function getCreation_date()
+    {
+        return $this->creation_date;
+    }
+
+    /**
+     * Set the value of creation_date
+     *
+     * @return  self
+     */ 
+    public function setCreation_date($creation_date)
+    {
+        $this->creation_date = $creation_date;
+
+        return $this;
+    }
 }
-?>

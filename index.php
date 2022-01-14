@@ -21,7 +21,7 @@ require  "./components/loadClasses.php";
 
         <?php
         foreach ($missions as $mission) {
-            require "../kgb/vue/affichage_missions.php";
+            require "./affichage_missions.php";
         }
         ?>
     </div>
@@ -29,5 +29,5 @@ require  "./components/loadClasses.php";
 </main>
 
 <?php
-require  './components/footer.php';
+require  './kgb/components/footer.php';
 ?>
