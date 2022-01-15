@@ -1,6 +1,6 @@
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT']."/loadClasses.php";
+require  "../../loadClasses.php";
 
 
 $manager = new AgentsManager();

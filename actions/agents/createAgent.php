@@ -1,7 +1,8 @@
 <?php
 
-require  "/header.php";
-require  "/loadClasses.php";
+
+require  "../../header.php";
+require  "../../loadClasses.php";
 
 
 $manager = new AgentsManager();
@@ -16,7 +17,7 @@ if ($_POST) {
     $manager->create($agent);
     ?>
     <script>
-    window.location.href="./createAgentSpecialities.php?identification_code=<?=$_POST['identification_code'] ?>"
+    window.location.href="createAgentSpecialities.php?identification_code=<?=$_POST['identification_code'] ?>"
     </script>
     <?php
 }
@@ -68,6 +69,8 @@ if ($_POST) {
 
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT'].'/components/footer.php';
+require  '../../footer.php';
+
+
 
 ?>
