@@ -3,12 +3,12 @@
 
 
 <?php 
-$img_src = $_SERVER['DOCUMENT_ROOT'] . "/img/logo_KGB.png" ;
-$jquery_src = $_SERVER['DOCUMENT_ROOT'] . "/node_modules/jquery/dist/jquery.min.js";
-$bootstrap_src = $_SERVER['DOCUMENT_ROOT'] . "/node_modules/bootstrap/dist/css/bootstrap.css";
-$logPage_src = $_SERVER['DOCUMENT_ROOT'] . "/logPage.php";
-$index_src = $_SERVER['DOCUMENT_ROOT'] . "/index.php";
-$style_src = $_SERVER['DOCUMENT_ROOT'] . "/style.php";
+$img_src = $_SERVER['HTTP_HOST'] . "/img/logo_KGB.png" ;
+$jquery_src = $_SERVER['HTTP_HOST'] . "/node_modules/jquery/dist/jquery.min.js";
+$bootstrap_src = $_SERVER['HTTP_HOST'] . "/node_modules/bootstrap/dist/css/bootstrap.css";
+$logPage_src = $_SERVER['HTTP_HOST'] . "/logPage.php";
+$index_src = $_SERVER['HTTP_HOST'] . "/index.php";
+$style_src = $_SERVER['HTTP_HOST'] . "/style.php";
 
 var_dump($bootstrap_src);
 ?>
