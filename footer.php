@@ -1,5 +1,5 @@
-<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
-<script src="script.js"></script>
+<script src="https://kgb-studi.herokuapp.com/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="https://kgb-studi.herokuapp.com/script.js"></script>
 
 </body>
 
