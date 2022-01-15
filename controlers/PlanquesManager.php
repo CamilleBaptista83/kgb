@@ -71,7 +71,7 @@ class PlanquesManager
 
     public function delete(string $id)
     {
-        $request = $this->pdo->prepare("DELETE * FROM dt_stakeout WHERE id=:id");
+        $request = $this->pdo->prepare("DELETE FROM `dt_stakeout` WHERE id= :id ");
         $request->bindValue(':id', $id, PDO::PARAM_STR);
         $request->execute();
     }
