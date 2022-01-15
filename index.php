@@ -9,6 +9,8 @@ require  "loadClasses.php";
 <main>
     <?php
 
+    echo __DIR__;
+
     // MISSIONS
 
     // creation d'un nouvel obj
