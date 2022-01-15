@@ -1,33 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-
-<?php 
-$img_src = $_SERVER['HTTP_HOST'] . "/img/logo_KGB.png" ;
-$jquery_src = $_SERVER['HTTP_HOST'] . "/node_modules/jquery/dist/jquery.min.js";
-$bootstrap_src = $_SERVER['HTTP_HOST'] . "/node_modules/bootstrap/dist/css/bootstrap.css";
-$logPage_src = $_SERVER['HTTP_HOST'] . "/logPage.php";
-$index_src = $_SERVER['HTTP_HOST'] . "/index.php";
-$style_src = $_SERVER['HTTP_HOST'] . "/style.php";
-
-var_dump($bootstrap_src);
-?>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Import Bootstrap.css -->
-    <link rel="stylesheet" type="text/css" href="<?= $bootstrap_src ?>">
+    <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.css">
 
     <!-- Import Logos -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
     <!-- Import Style.css -->
-    <link rel="stylesheet" type="text/css" href="<?= $style_src ?>">
+    <link rel="stylesheet" type="text/css" href="./style.css">
 
-    <script src="<?= $jquery_src ?>"></script>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
 
     <title>KGB</title>
 
@@ -39,7 +27,7 @@ var_dump($bootstrap_src);
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#"><img class="logo" src="<?= $img_src ?>" /></a>
+                <a class="navbar-brand" href="#"><img class="logo" src="img/logo_KGB.png" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -47,10 +35,10 @@ var_dump($bootstrap_src);
                     <div class="container">
                         <ul class="nav justify-content-end">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="<?= $index_src ?>">Acceuil</a>
+                                <a class="nav-link active" aria-current="page" href="./index.php">Acceuil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= $logPage_src ?>">Admin</a>
+                                <a class="nav-link" href="./logPage.php">Admin</a>
                             </li>
                         </ul>
                     </div>
