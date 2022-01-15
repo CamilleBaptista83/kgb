@@ -1,7 +1,7 @@
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT'] . "/header.php";
-require  $_SERVER['DOCUMENT_ROOT'] . "/loadClasses.php";
+require  "../../header.php";
+require  "../../loadClasses.php";
 
 
 $manager = new PlanquesManager();
@@ -81,6 +81,6 @@ if ($_POST) {
 
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT'] . '/footer.php';
+require  '../../footer.php';
 
 ?>

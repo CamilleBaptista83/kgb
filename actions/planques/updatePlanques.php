@@ -1,10 +1,7 @@
 <?php
 
 require  "../../header.php";
-
-
-
-require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/loadClasses.php";
+require  "../../loadClasses.php";
 
 
 $manager = new PlanquesManager();
@@ -81,6 +78,6 @@ if ($_POST) {
 
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT'].'/kgb/components/footer.php';
+require  '../../footer.php';
 
 ?>

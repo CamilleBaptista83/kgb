@@ -1,10 +1,7 @@
 <?php
 
 require  "../../header.php";
-
-
-
-require  $_SERVER['DOCUMENT_ROOT']."/kgb/components/loadClasses.php";
+require  "../../loadClasses.php";
 
 
 $manager = new ContactsManager();
@@ -69,6 +66,6 @@ if ($_POST) {
 
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT'].'/kgb/components/footer.php';
+require  '../../footer.php';
 
 ?>
