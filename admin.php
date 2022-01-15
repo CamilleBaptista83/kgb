@@ -172,6 +172,7 @@ if (isset($_SESSION['last_name'])) {
 
 <?php
     require  'footer.php';
+    
 } else {
     echo '<script>window.location.href="404.php"</script>';
 }
