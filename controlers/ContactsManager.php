@@ -25,7 +25,8 @@ class ContactsManager
             $this->setPdo(new PDO('mysql:host=' . $hostname . ';dbname=' . $database . ';charset=utf8', $username, $password));
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
-        }    }
+        }
+    }
 
     /**
      * Get the value of pdo
@@ -72,7 +73,7 @@ class ContactsManager
 
     public function delete(string $contact_id_uuid)
     {
-        $request = $this->pdo->prepare("DELETE * FROM dt_contacts WHERE contact_id_uuid=:contact_id_uuid");
+        $request = $this->pdo->prepare("DELETE FROM `dt_contacts` WHERE contact_id_uuid= :contact_id_uuid ");
         $request->bindValue(':contact_id_uuid', $contact_id_uuid, PDO::PARAM_STR);
         $request->execute();
     }
