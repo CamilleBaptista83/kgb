@@ -23,6 +23,20 @@ if ($_POST) {
 }
 ?>
 
+<script>
+    $(document).ready(function() {
+        $('#checkBtn').click(function() {
+            checked = $("input[type=checkbox]:checked").length;
+
+            if (!checked) {
+                alert("You must check at least one checkbox.");
+                return false;
+            }
+
+        });
+    });
+</script>
+
 <div class="container">
     <h2 class="text-center">Ajouter des Spécialités à l'agent <?= $agent->getIdentification_code() ?></h2>
     <form method="post">

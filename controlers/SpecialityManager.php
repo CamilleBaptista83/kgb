@@ -25,7 +25,8 @@ class SpecialityManager
             $this->setPdo(new PDO('mysql:host=' . $hostname . ';dbname=' . $database . ';charset=utf8', $username, $password));
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
-        }    }
+        }
+    }
 
     /**
      * Get the value of pdo
