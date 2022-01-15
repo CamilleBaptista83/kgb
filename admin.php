@@ -49,13 +49,7 @@ if (isset($_SESSION['last_name'])) {
                     <?php
                     // affichage agents
                     foreach ($agents as $agent) {
-                        require "vue/affichage_agents.php"; ?>
-
-                        <div class="actions">
-                            <a href="actions/agents/updateAgents.php?id=<?= $agent->getAgent_id_uuid() ?>"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/30/000000/external-edit-interface-kiranshastry-solid-kiranshastry-2.png" /></a>
-                            <a onclick="deleteAjax('<?= $agent->getAgent_id_uuid(); ?>', '<?= $agent->getIdentification_code() ?>', 'actions/agents/deleteAgents.php')"><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png" /></a>
-                        </div>
-                    <?php
+                        require "vue/affichage_agents.php";
                     }
                     ?>
                     <div class="col-6 col-sm-4 col-md-3 p-2">
@@ -82,12 +76,6 @@ if (isset($_SESSION['last_name'])) {
                     <?php
                     foreach ($cibles as $cible) {
                         require "vue/affichage_cibles.php";
-                    ?>
-                        <div class="actions">
-                            <a href="actions/cibles/updateCibles.php?id=<?= $cible->getTarget_id_uuid() ?>"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/30/000000/external-edit-interface-kiranshastry-solid-kiranshastry-2.png" /></a>
-                            <a onclick="deleteAjax('<?= $cible->getTarget_id_uuid(); ?>', '<?= $cible->getCode_name() ?>', 'actions/cibles/deleteCibles.php')"><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png" /></a>
-                        </div>
-                    <?php
                     }
                     ?>
                     <div class="col-6 col-sm-4 col-md-3 p-2">
@@ -111,12 +99,6 @@ if (isset($_SESSION['last_name'])) {
                     <?php
                     foreach ($contacts as $contact) {
                         require "vue/affichage_contacts.php";
-                    ?>
-                        <div class="actions">
-                            <a href="actions/contacts/updateContact.php?id=<?= $contact->getContact_id_uuid() ?>"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/30/000000/external-edit-interface-kiranshastry-solid-kiranshastry-2.png" /></a>
-                            <a onclick="deleteAjax('<?= $contact->getContact_id_uuid(); ?>', '<?= $contact->getCode_name() ?>', 'actions/contacts/deleteContact.php')"><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png" /></a>
-                        </div>
-                    <?php
                     }
                     ?>
 
@@ -142,12 +124,6 @@ if (isset($_SESSION['last_name'])) {
                     <?php
                     foreach ($planques as $planque) {
                         require "vue/affichage_planques.php";
-                    ?>
-                        <div class="actions">
-                            <a href="actions/planques/updatePlanques.php?id=<?= $planque->getId() ?>"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/30/000000/external-edit-interface-kiranshastry-solid-kiranshastry-2.png" /></a>
-                            <a onclick="deleteAjax('<?= $planque->getId(); ?>', '<?= $planque->getCode() ?>', 'actions/planques/deletePlanques.php')"><img src="https://img.icons8.com/ios-glyphs/30/000000/filled-trash.png" /></a>
-                        </div>
-                    <?php
                     }
                     ?>
 
