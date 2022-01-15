@@ -24,7 +24,7 @@ if (isset($_SESSION['last_name'])) {
 ?>
 
     <div class="container">
-        <button class="btn logOut"><a href="/admin/logOut.php">Se déconnecter</a></button>
+        <button class="btn logOut"><a href="logOut.php">Se déconnecter</a></button>
 
         <h1 class="text-center m-4">Bienvenue Agent <?= $_SESSION['last_name'] ?></h1>
 
@@ -169,9 +169,15 @@ if (isset($_SESSION['last_name'])) {
                 <h2 class="text-center m-4">MISSIONS</h2>
 
                 <?php
-                foreach ($missions as $mission) {
-                    require "vue/affichage_missions.php"; ?>
-                    <a href="details_mission.php?id=<?= $mission->getMission_id_uuid() ?>" class="btn btn-danger">En Savoir Plus</a>
+                foreach ($missions as $mission) { ?>
+                    <div class="card m-5">
+                        <div class="card-body">
+                            <?php
+                            require "vue/affichage_missions.php";
+                            ?>
+                            <a href="details_mission.php?id=<?= $mission->getMission_id_uuid() ?>" class="btn btn-danger">En Savoir Plus</a>
+                        </div>
+                    </div>
                 <?php
                 }
                 ?>

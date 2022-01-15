@@ -8,9 +8,6 @@
                 <li class="list-group-item"><?= $planque->getName_type() ?></li>
             </ul>
             <p class="card-text"><small class="text-muted"><?= $planque->getId() ?></small></p>
-
-
-
         </div>
     </div>
 </div>

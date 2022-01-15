@@ -1,7 +1,7 @@
 <?php
 
-require  $_SERVER['DOCUMENT_ROOT']."/components/header.php";
-require  $_SERVER['DOCUMENT_ROOT']."/components/loadClasses.php";
+require  "/header.php";
+require  "/loadClasses.php";
 
 
 $manager = new AgentsManager();

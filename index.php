@@ -20,8 +20,17 @@ require  "loadClasses.php";
         <h1 class="text-center">Les Missions</h1>
 
         <?php
-        foreach ($missions as $mission) {
-            require "vue/affichage_missions.php";
+        foreach ($missions as $mission) { ?>
+            <div class="card m-5">
+                <div class="card-body">
+                    <?php
+                    require "vue/affichage_missions.php";
+                    ?>
+                    <a href="details_mission.php?id=<?= $mission->getMission_id_uuid() ?>" class="btn btn-danger">En Savoir Plus</a>
+                </div>
+            </div>
+
+        <?php
         }
         ?>
     </div>

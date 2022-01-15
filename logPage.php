@@ -20,7 +20,5 @@ include  "vue/affichage_log.php";
 
 }
 
-
-
 include  'footer.php';
 ?>
