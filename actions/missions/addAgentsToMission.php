@@ -122,7 +122,7 @@ if ($_POST) {
                 foreach ($contacts as $contact) {
                 ?>
                     <div class="form-check">
-                        <input name='contact_id_uuid[]' class="form-check-input" type="radio" value="<?= $contact->getContact_id_uuid() ?>" id="flexCheckDefault">
+                        <input name='contact_id_uuid[]' class="form-check-input" type="checkbox" value="<?= $contact->getContact_id_uuid() ?>" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             <?= $contact->getLast_name() ?>
                         </label>
@@ -139,7 +139,7 @@ if ($_POST) {
                 foreach ($planques as $planque) {
                 ?>
                     <div class="form-check">
-                        <input name='id[]' class="form-check-input" type="radio" value="<?= $planque->getId() ?>" id="flexCheckDefault">
+                        <input name='id[]' class="form-check-input" type="checkbox" value="<?= $planque->getId() ?>" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             <?= $planque->getCode() ?>
                             <?= $planque->getAdress() ?>

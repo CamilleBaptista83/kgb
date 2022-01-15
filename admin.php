@@ -15,8 +15,6 @@ if (isset($_SESSION['last_name'])) {
     $manager = new ContactsManager();
     $contacts = $manager->getAll();
 
-    var_dump($contacts);
-
     $managerPlanques = new PlanquesManager();
     $planques = $managerPlanques->getAll();
 
