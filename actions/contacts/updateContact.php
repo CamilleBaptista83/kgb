@@ -24,7 +24,7 @@ if ($_POST) {
         <div class="row">
             <div class="form-group col-sm-6">
                 <label for="form-label">Code d'didentification : </label>
-                <input type="text" class="form-control" id="identification_code" name="identification_code" value="<?= $contact->getCode_name() ?>" required>
+                <input type="text" class="form-control" id="code_name" name="code_name" value="<?= $contact->getCode_name() ?>" required>
             </div>
 
             <div class="form-group col-sm-6">
