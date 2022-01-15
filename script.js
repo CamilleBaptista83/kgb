@@ -10,6 +10,7 @@ function show() {
     }
   }
 }
+
 var divs = ["agents", "cibles", "contacts", "planques", "missions"];
 var visibleDivId = null;
 function divVisibility(divId) {
