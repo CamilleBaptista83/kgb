@@ -1,0 +1,6 @@
+leonid.chebarchine@kgb-russia.ru
+v.tchebrikov@kgb-russia.ru
+bakatine@kgb-russia.ru
+vlad.poutine@kgb-russia.ru
+
+password = password
