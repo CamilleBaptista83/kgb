@@ -23,6 +23,15 @@ CREATE TABLE dt_admin(
     creation_date DATETIME
 );
 
+INSERT INTO dt_admin(admin_id_uuid, first_name, last_name, email, password, creation_date) VALUES 
+    (UUID(), 'Leonid', 'Chebarchine', 'leonid.chebarchine@kgb-russia.ru', '$2y$10$ofWW7pM3L4f1HHQUR2mf/ucgoDUajfOd6NclueABiRE4Tlh6VIfQ.', NOW()),
+    (UUID(), 'Viktor', 'Tchebrikov', 'v.tchebrikov@kgb-russia.ru', '$2y$10$DpkLHGSQwpZkZKB1dXtmEOgHNXM43GHx.ruuEQ0lWVgaUJXX6lQrS', NOW()),
+    (UUID(), 'Vadim', 'Bakatine', 'bakatine@kgb-russia.ru', '$2y$10$YIpMRau0rXgEWStI18/PfujK0dN5Cypy8x9a0sN2o1sp8UN.W73sC', NOW()),
+    (UUID(), 'Vladimir', 'Poutine', 'vlad.poutine@kgb-russia.ru', '$2y$10$ewRFJmDnHTOFn9wovAj9tOvndRtOdM5KdFprYUJydcmkT3X036pT.', NOW());
+
+SELECT * FROM dt_admin;
+
+
 
 -- LES TABLES SANS DEPENDANCES 
 
